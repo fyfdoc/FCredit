@@ -22,7 +22,7 @@ import dagger.Component;
 @Component(dependencies = {ApiComponent.class}, modules = {ActivityModule.class, PageModule.class})
 @PerActivity
 public interface ActivityComponent {
-    //Bilibili
+    //FCredit
     void inject(MainActivity mainActivity);
     void inject(LivePlayActivity livePlayActivity);
 
