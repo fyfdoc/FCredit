@@ -51,6 +51,8 @@ public class MainFragment extends BaseFragment {
     LiveFragment mLiveFragmet;
     @Inject
     RecommendFragment mRecommendFragment;
+//    @Inject
+    RecommendFragment mRecommendFragment2 = new  RecommendFragment();
     @Inject
     BangumiFragment mBangumiFragment;
 
@@ -112,7 +114,8 @@ public class MainFragment extends BaseFragment {
     }
 
     private void initChildFragment() {
-        mFragments.add(mLiveFragmet);
+        //mFragments.add(mLiveFragmet);
+        mFragments.add(mRecommendFragment2);
         mFragments.add(mRecommendFragment);
         mFragments.add(mBangumiFragment);
         mFragments.add(new PlaceHolderFragment());
