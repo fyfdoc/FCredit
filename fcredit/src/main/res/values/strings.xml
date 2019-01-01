@@ -11,7 +11,7 @@
     <string name="charge_no_data_tips">╮(╯3╰)╭再怎么找也没有啦</string>
     <string name="upper_load_failed_with_click">加载失败,请点击重新尝试</string>
     <string name="tips_load_error">加载失败了Σ(OДO</string>
-    <string name="section_region">分区</string>
+    <string name="section_region">统计</string>
 
     <!-- Main -->
     <string name="section_home">首页</string>
@@ -23,7 +23,7 @@
     <string name="menu_top_download_tips">离线列表</string>
     <string name="menu_top_search_tips">搜索</string>
     <string name="nav_offline_manager">离线缓存</string>
-    <string name="section_bangumi">追番</string>
+    <string name="section_bangumi">还款日</string>
     <string name="section_discover">发现</string>
     <string name="section_live">卡片</string>
     <string name="section_movie">影视</string>
