@@ -23,12 +23,12 @@
     <string name="menu_top_download_tips">离线列表</string>
     <string name="menu_top_search_tips">搜索</string>
     <string name="nav_offline_manager">离线缓存</string>
-    <string name="section_bangumi">还款日</string>
+    <string name="section_bangumi">追番</string>
     <string name="section_discover">发现</string>
-    <string name="section_live">卡片</string>
+    <string name="section_live">直播</string>
     <string name="section_movie">影视</string>
     <string name="section_special_column">专栏</string>
-    <string name="section_recommend">记录</string>
+    <string name="section_recommend">推荐</string>
     <string name="title_game">游戏中心</string>
 
     <!-- Live -->
@@ -105,4 +105,27 @@
     <string name="tv_play">电视剧</string>
     <string name="game_center">游戏中心</string>
     <string name="more_format">更多%s</string>
+
+    <!-- Credit Info -->
+    <string name="add">添加</string>
+    <string name="credit_name">卡名</string>
+    <string name="credit_no">卡号</string>
+    <string name="bank_name">银行</string>
+    <string name="credit_limit">额度</string>
+    <string name="statement_date">账单日</string>
+    <string name="repayment_date">还款日</string>
+    <string name="credit_comment">备注</string>
+
+    <string name="section_credit_card">卡片信息</string>
+    <string name="section_swipe_record">刷卡记录</string>
+    <string name="section_repayment_record">还款记录</string>
+    <string name="section_repayment_date">待定</string>
+
+
+    <!--button-->
+    <string name="btn_save">保存</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_add_credit_info">AddCreditInfoActivity</string>
 </resources>

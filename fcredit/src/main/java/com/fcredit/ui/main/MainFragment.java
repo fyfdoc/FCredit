@@ -11,15 +11,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.common.base.BaseFragment;
 import com.fcredit.App;
 import com.fcredit.R;
 import com.fcredit.model.event.TabSelectedEvent;
 import com.fcredit.model.event.ToggleDrawerEvent;
 import com.fcredit.ui.bangumi.BangumiFragment;
+import com.fcredit.ui.creditinfo.CreditInfoFragment;
 import com.fcredit.ui.live.LiveFragment;
 import com.fcredit.ui.recommed.RecommendFragment;
 import com.fcredit.ui.test.fragment.PlaceHolderFragment;
-import com.common.base.BaseFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -52,7 +53,7 @@ public class MainFragment extends BaseFragment {
     @Inject
     RecommendFragment mRecommendFragment;
 //    @Inject
-    RecommendFragment mRecommendFragment2 = new  RecommendFragment();
+    CreditInfoFragment mCreditInfoFragment = new CreditInfoFragment();
     @Inject
     BangumiFragment mBangumiFragment;
 
@@ -73,7 +74,8 @@ public class MainFragment extends BaseFragment {
     @Override
     protected void initViewAndEvent() {
         setUpToolBar(mToolbar);
-        mTitles = getResources().getStringArray(R.array.home_sections);
+//        mTitles = getResources().getStringArray(R.array.home_sections);
+        mTitles = getResources().getStringArray(R.array.home_sections_credit);
         initChildFragment();
         adapter = new MainPagerAdapter(getChildFragmentManager());
         viewPager.setAdapter(adapter);
@@ -115,7 +117,7 @@ public class MainFragment extends BaseFragment {
 
     private void initChildFragment() {
         //mFragments.add(mLiveFragmet);
-        mFragments.add(mRecommendFragment2);
+        mFragments.add(mCreditInfoFragment);
         mFragments.add(mRecommendFragment);
         mFragments.add(mBangumiFragment);
         mFragments.add(new PlaceHolderFragment());
