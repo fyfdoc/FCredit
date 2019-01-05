@@ -83,5 +83,16 @@
         android:gravity="center"
         android:textColor="#000"
         android:textSize="13sp" />
+    <!--还款日-->
+    <com.fcredit.widget.table.TableCellTextView
+        android:id="@+id/list_1_8"
+        android:layout_width="150dp"
+        android:layout_height="@dimen/table_line_height"
+        android:layout_alignBottom="@+id/list_1_7"
+        android:layout_alignTop="@+id/list_1_7"
+        android:layout_toRightOf="@+id/list_1_7"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="13sp" />
 
 </RelativeLayout>

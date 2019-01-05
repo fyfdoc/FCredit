@@ -1,6 +1,8 @@
 package com.fcredit.ui.creditinfo;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,6 +16,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.fcredit.R;
+import com.fcredit.util.AppConstaint;
+import com.fcredit.util.DBHelper;
 import com.fcredit.widget.table.TableCellTextView;
 
 import butterknife.OnClick;
@@ -25,7 +29,7 @@ public class CreditInfoFragment extends Fragment {
     // 显示数据表的Layout
     private LinearLayout cellLayout;
     private RelativeLayout cellLineLayout;
-    private String[] ColName={"序号","卡明","卡号","银行","额度", "账单日", "还款日"};
+    private String[] ColName={"序号","卡名","卡号","银行","额度", "账单日", "还款日", "备注"};
 
 
     @Override
@@ -38,7 +42,6 @@ public class CreditInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_credit_info, container, false);
-        final int containerId = container.getId();
         // 获取显示表格的Layout
         cellLayout = view.findViewById(R.id.creditInfoTable);
        // 添加按钮
@@ -61,6 +64,7 @@ public class CreditInfoFragment extends Fragment {
         });
 
 
+
         // 初始化数据
         initData();
 
@@ -69,6 +73,10 @@ public class CreditInfoFragment extends Fragment {
 
     private void initData()
     {
+        // 数据库
+        DBHelper dbHelper = new DBHelper(getContext(), AppConstaint.DB_NAME, null, 1);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
         //初始化标题,
         cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_credit_info, null);
         // "序号"
@@ -99,12 +107,20 @@ public class CreditInfoFragment extends Fragment {
         title =  cellLineLayout.findViewById(R.id.list_1_7);
         title.setText(ColName[6]);
         title.setTextColor(Color.BLUE);
+        // "备注"
+        title =  cellLineLayout.findViewById(R.id.list_1_8);
+        title.setText(ColName[7]);
+        title.setTextColor(Color.BLUE);
 
         cellLayout.addView(cellLineLayout);
 
-        //初始化内容
         int number = 1;
-        for (int i=0; i < 10; i++) {
+        //数据库检索
+        Cursor cursor = db.query("t_credit_info"
+                ,new String[]{"id", "credit_name","credit_no","bank_name","credit_limit", "statement_date","repayment_date", "credit_comment"}
+                ,null,null, null,null, null,null);
+        while (cursor.moveToNext())
+        {
             cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_credit_info, null);
             // "序号"
             TableCellTextView txt = cellLineLayout.findViewById(R.id.list_1_1);
@@ -112,27 +128,33 @@ public class CreditInfoFragment extends Fragment {
             txt.setText(tmpVal);
             // "卡名"
             txt =  cellLineLayout.findViewById(R.id.list_1_2);
-            txt.setText("FYF建行" +  String.valueOf(number));
+            tmpVal = cursor.getString(cursor.getColumnIndex("credit_name"));
+            txt.setText(tmpVal);
             // "卡号"
             txt =  cellLineLayout.findViewById(R.id.list_1_3);
-            int tmpInt = 10 + number;
-            txt.setText("6666 6666 6666 6666" + String.valueOf(tmpInt));
+            tmpVal = cursor.getString(cursor.getColumnIndex("credit_no"));
+            txt.setText(tmpVal);
             // "银行"
             txt =  cellLineLayout.findViewById(R.id.list_1_4);
-            txt.setText("建行");
+            txt.setText(cursor.getString(cursor.getColumnIndex("bank_name")));
             // "额度"
             txt =  cellLineLayout.findViewById(R.id.list_1_5);
-            txt.setText("50000");
+            txt.setText(cursor.getString(cursor.getColumnIndex("credit_limit")));
             // "账单日"
             txt =  cellLineLayout.findViewById(R.id.list_1_6);
-            txt.setText("07");
+            txt.setText(cursor.getString(cursor.getColumnIndex("statement_date")));
             // "还款日"
             txt =  cellLineLayout.findViewById(R.id.list_1_7);
-            txt.setText("25");
+            txt.setText(cursor.getString(cursor.getColumnIndex("repayment_date")));
+            // "备注"
+            txt =  cellLineLayout.findViewById(R.id.list_1_8);
+            txt.setText(cursor.getString(cursor.getColumnIndex("credit_comment")));
 
             cellLayout.addView(cellLineLayout);
             number++;
+
         }
+
 
     }
 
