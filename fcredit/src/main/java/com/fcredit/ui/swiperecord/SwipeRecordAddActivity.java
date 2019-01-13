@@ -1,4 +1,4 @@
-package com.fcredit.ui.creditinfo;
+package com.fcredit.ui.swiperecord;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.fcredit.R;
+import com.fcredit.ui.creditinfo.AddCreditInfoFragment;
 
-public class AddCreditInfoActivity extends AppCompatActivity {
+public class SwipeRecordAddActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,10 +18,10 @@ public class AddCreditInfoActivity extends AppCompatActivity {
         // 获取参数
         Bundle bundle = intent.getBundleExtra("bundle");
 
-        setContentView(R.layout.activity_add_credit_info);
+        setContentView(R.layout.activity_swipe_record_add);
 
         // 当前Fragment
-        AddCreditInfoFragment fragment = (AddCreditInfoFragment) getSupportFragmentManager().findFragmentById(R.id.addCreditFragment);
+        SwipeRecordAddFragment fragment = (SwipeRecordAddFragment) getSupportFragmentManager().findFragmentById(R.id.addCreditFragment);
         if (bundle != null)
         {
             // 传递参数
@@ -28,9 +29,9 @@ public class AddCreditInfoActivity extends AppCompatActivity {
             fragment.initData();
         }
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
     }
 

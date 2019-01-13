@@ -15,7 +15,7 @@
         <!-- 主页 -->
         <activity
             android:name=".ui.test.activity.NavigationTestActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <!-- 测试mvp结构 -->
         <!-- 测试Fragment TabLayout DrawerLayout 沉浸式布局 -->
@@ -88,6 +88,10 @@
         <activity
             android:name=".ui.creditinfo.AddCreditInfoActivity"
             android:label="@string/title_activity_add_credit_info"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.swiperecord.SwipeRecordAddActivity"
+            android:label="@string/title_activity_swipe_record_add"
             android:theme="@style/AppTheme"></activity>
     </application>
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.fcredit.ui.creditinfo.AddCreditInfoActivity">
+    tools:context="com.fcredit.ui.swiperecord.SwipeRecordAddActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -12,8 +12,8 @@
         android:layout_height="match_parent">
 
         <fragment
-            android:name="com.fcredit.ui.creditinfo.AddCreditInfoFragment"
-            android:id="@+id/addCreditFragment"
+            android:name="com.fcredit.ui.swiperecord.SwipeRecordAddFragment"
+            android:id="@+id/addSwipeRecordFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />

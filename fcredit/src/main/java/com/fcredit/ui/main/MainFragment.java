@@ -20,6 +20,7 @@ import com.fcredit.ui.bangumi.BangumiFragment;
 import com.fcredit.ui.creditinfo.CreditInfoFragment;
 import com.fcredit.ui.live.LiveFragment;
 import com.fcredit.ui.recommed.RecommendFragment;
+import com.fcredit.ui.swiperecord.SwipeRecordListFragment;
 import com.fcredit.ui.test.fragment.PlaceHolderFragment;
 
 import org.greenrobot.eventbus.EventBus;
@@ -53,7 +54,10 @@ public class MainFragment extends BaseFragment {
     @Inject
     RecommendFragment mRecommendFragment;
 //    @Inject
+    // 卡片信息
     CreditInfoFragment mCreditInfoFragment = new CreditInfoFragment();
+    // 刷卡记录
+    SwipeRecordListFragment mSwipeRecordListFragment = new SwipeRecordListFragment();
     @Inject
     BangumiFragment mBangumiFragment;
 
@@ -118,7 +122,7 @@ public class MainFragment extends BaseFragment {
     private void initChildFragment() {
         //mFragments.add(mLiveFragmet);
         mFragments.add(mCreditInfoFragment);
-        mFragments.add(mRecommendFragment);
+        mFragments.add(mSwipeRecordListFragment);
         mFragments.add(mBangumiFragment);
         mFragments.add(new PlaceHolderFragment());
         mFragments.add(new PlaceHolderFragment());

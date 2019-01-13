@@ -18,6 +18,13 @@ public class DBHelper extends SQLiteOpenHelper {
             + " ,statement_date"
             + " ,repayment_date"
             + " ,credit_comment)";
+    public static final String CREATE_SWIPE_RECORD_INFO_TABLE="CREATE TABLE t_swipe_record_info "
+            + " id integer primary key autoincrement"
+            + " ,card_id integer"
+            + " ,swipe_date date"
+            + " ,amounts decimal(8, 2)"
+            + " ,vendor_name text";
+
     /**
      * 带全部参数的构造方法
      * @param context
@@ -39,6 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db)
     {
         db.execSQL(CREATE_CREDIT_INFO_TABLE);
+        db.execSQL(CREATE_SWIPE_RECORD_INFO_TABLE);
 
         Toast.makeText(mContext, "create succeeded", Toast.LENGTH_SHORT).show();
     }
