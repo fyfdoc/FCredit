@@ -5,11 +5,21 @@
 
     <!--序号-->
     <com.fcredit.widget.table.TableCellTextView
+        android:id="@+id/list_1_0"
+        android:layout_width="50dp"
+        android:layout_height="@dimen/table_line_height"
+        android:layout_alignBottom="@+id/list_1_1"
+        android:layout_alignTop="@+id/list_1_1"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <!--序号-->
+    <com.fcredit.widget.table.TableCellTextView
         android:id="@+id/list_1_1"
         android:layout_width="50dp"
         android:layout_height="@dimen/table_line_height"
-        android:layout_alignBottom="@+id/list_1_2"
-        android:layout_alignTop="@+id/list_1_2"
+        android:layout_toRightOf="@+id/list_1_0"
         android:gravity="center"
         android:textColor="#000"
         android:textSize="13sp" />

@@ -1,6 +1,6 @@
 package com.fcredit.ui.creditinfo;
 
-import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.fcredit.R;
 import com.fcredit.util.AppConstaint;
@@ -29,6 +30,78 @@ public class AddCreditInfoFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_add_credit_info, container, false);
 
+
+        final EditText txtId = view.findViewById(R.id.txtId);
+        final EditText edtCreditName = view.findViewById(R.id.edtCreditName);
+        final EditText edtCreditNo = view.findViewById(R.id.edtCreditNo);
+        final EditText edtBankName = view.findViewById(R.id.edtBankName);
+        final EditText edtCreditLimit = view.findViewById(R.id.edtCreditLimit);
+        final EditText edtStatementDate = view.findViewById(R.id.edtStatmentDate);
+        final EditText edtRepaymentDate = view.findViewById(R.id.edtRepaymentDate);
+        final EditText edtComment = view.findViewById(R.id.edtComment);
+
+        // 数据库
+        DBHelper dbHelper = new DBHelper(getContext(), AppConstaint.DB_NAME, null, 1);
+        final SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        // 保存按钮
+        Button btnSave = view.findViewById(R.id.btnSave);
+
+        // 保存按钮事件
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //SQL
+                String strSQL = "";
+                if (txtId.getText() != null && !"".equals(txtId.getText().toString()))// 更新
+                {
+                    strSQL = "UPDATE t_credit_info SET credit_name=?, credit_no=?";
+                    strSQL += ", bank_name=?, credit_limit=?, statement_date=?, repayment_date=?, credit_comment=?";
+                    strSQL += " WHERE id=?";
+
+                    // Values
+                    String[] values = new String[]{edtCreditName.getText().toString()
+                            ,edtCreditNo.getText().toString()
+                            ,edtBankName.getText().toString()
+                            , edtCreditLimit.getText().toString()
+                            ,edtStatementDate.getText().toString()
+                            ,edtRepaymentDate.getText().toString()
+                            ,edtComment.getText().toString()
+                            ,txtId.getText().toString()};
+
+                    // 更新
+                    db.execSQL(strSQL, values);
+                }
+                else // 插入
+                {
+                    strSQL = "INSERT INTO t_credit_info";
+                    strSQL += " (credit_name, credit_no, bank_name, credit_limit, statement_date, repayment_date, credit_comment)";
+                    strSQL += " VALUES (?,?,?,?,?,?,?)";
+                    // Values
+                    String[] values = new String[]{edtCreditName.getText().toString()
+                            ,edtCreditNo.getText().toString()
+                            ,edtBankName.getText().toString()
+                            , edtCreditLimit.getText().toString()
+                            ,edtStatementDate.getText().toString()
+                            ,edtRepaymentDate.getText().toString()
+                            ,edtComment.getText().toString()};
+
+                    // 插入
+                    db.execSQL(strSQL, values);
+                }
+
+                myToast("保存成功");
+
+            }
+        });
+
+        return view;
+    }
+
+    public void initData()
+    {
+        View view = getView();
+        final EditText txtId = view.findViewById(R.id.txtId);
         final EditText edtCreditName = view.findViewById(R.id.edtCreditName);
         final EditText edtCreditNo = view.findViewById(R.id.edtCreditNo);
         final EditText edtBankName = view.findViewById(R.id.edtBankName);
@@ -42,27 +115,37 @@ public class AddCreditInfoFragment extends Fragment {
         DBHelper dbHelper = new DBHelper(getContext(), AppConstaint.DB_NAME, null, 1);
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
 
-        // 保存按钮
-        Button btnSave = view.findViewById(R.id.btnSave);
-
-        // 保存按钮事件
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            //创建存放数据的ContentValues对象
-                ContentValues values = new ContentValues();
-                values.put("credit_name", edtCreditName.getText().toString());
-                values.put("credit_no", edtCreditNo.getText().toString());
-                values.put("bank_name", edtBankName.getText().toString());
-                values.put("credit_limit", edtCreditLimit.getText().toString());
-                values.put("statement_date", edtStatementDate.getText().toString());
-                values.put("repayment_date", edtRepaymentDate.getText().toString());
-                values.put("credit_comment", edtComment.getText().toString());
-
-                //数据库执行插入命令
-                db.insert("t_credit_info", null, values);
+        // 获取参数
+        if (getArguments() != null)
+        {
+            String strId = getArguments().getString("id");
+            // 传递了参数
+            if ( strId != null)
+            {
+                // 到数据库检索
+                String strSQL = "SELECT * FROM t_credit_info "
+                        + " WHERE ID=?";
+                Cursor cursor = db.rawQuery(strSQL, new String[]{strId});
+                while (cursor.moveToNext())
+                {
+                    // 给页面赋值
+                    txtId.setText(cursor.getString(cursor.getColumnIndex("id")));
+                    edtCreditName.setText(cursor.getString(cursor.getColumnIndex("credit_name")));
+                    edtCreditNo.setText(cursor.getString(cursor.getColumnIndex("credit_no")));
+                    edtBankName.setText(cursor.getString(cursor.getColumnIndex("bank_name")));
+                    edtCreditLimit.setText(cursor.getString(cursor.getColumnIndex("credit_limit")));
+                    edtStatementDate.setText(cursor.getString(cursor.getColumnIndex("statement_date")));
+                    edtRepaymentDate.setText(cursor.getString(cursor.getColumnIndex("repayment_date")));
+                    edtComment.setText(cursor.getString(cursor.getColumnIndex("credit_comment")));
+                }
             }
-        });
-        return view;
+
+        }
+
+    }
+
+    private void myToast(String strMsg)
+    {
+        Toast.makeText(getActivity(), strMsg, Toast.LENGTH_SHORT).show();
     }
 }
