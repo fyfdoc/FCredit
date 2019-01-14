@@ -121,6 +121,13 @@
     <string name="section_repayment_record">还款记录</string>
     <string name="section_repayment_date">待定</string>
 
+    <!--刷卡信息-->
+    <string name="swipe_date">刷卡日期</string>
+    <string name="swipe_amounts">金额</string>
+    <string name="vendor_name">商户</string>
+    <string name="comment">备注</string>
+
+
 
     <!--button-->
     <string name="btn_save">保存</string>
