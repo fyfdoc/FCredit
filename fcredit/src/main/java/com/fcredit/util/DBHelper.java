@@ -13,17 +13,18 @@ public class DBHelper extends SQLiteOpenHelper {
             + " id integer primary key autoincrement"
             + " ,credit_name text"
             + " ,credit_no text"
-            + " ,bank_name"
-            + " ,credit_limit"
-            + " ,statement_date"
-            + " ,repayment_date"
-            + " ,credit_comment)";
+            + " ,bank_name text"
+            + " ,credit_limit integer"
+            + " ,statement_date text"
+            + " ,repayment_date text"
+            + " ,credit_comment text)";
     public static final String CREATE_SWIPE_RECORD_INFO_TABLE="CREATE TABLE t_swipe_record_info "
             + " (id integer primary key autoincrement"
             + " ,card_id integer"
             + " ,swipe_date date"
             + " ,amounts decimal(8, 2)"
-            + " ,vendor_name text)";
+            + " ,vendor_name text"
+            + " ,comment text)";
 
     /**
      * 带全部参数的构造方法
@@ -60,6 +61,9 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
+        //db.execSQL("delete from t_swipe_record_info");
+        //db.execSQL(CREATE_SWIPE_RECORD_INFO_TABLE);
+
         // 在这里面可以把旧的表 drop掉 从新创建新表，
         // 但如果数据比较重要更好的做法还是把旧表的数据迁移到新表上
         Toast.makeText(mContext, "onUpgrade oldVersion：" + oldVersion + " newVersion:" + newVersion, Toast.LENGTH_SHORT).show();
