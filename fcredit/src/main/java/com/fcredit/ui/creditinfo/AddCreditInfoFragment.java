@@ -46,6 +46,14 @@ public class AddCreditInfoFragment extends Fragment {
 
         // 保存按钮
         Button btnSave = view.findViewById(R.id.btnSave);
+        // 删除按钮
+        Button btnDelete = view.findViewById(R.id.btnDelete);
+
+        // 更新或删除
+        if (txtId.getText() != null && !"".equals(txtId.getText().toString()))
+        {
+            btnDelete.setEnabled(false);
+        }
 
         // 保存按钮事件
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -92,6 +100,27 @@ public class AddCreditInfoFragment extends Fragment {
 
                 myToast("保存成功");
 
+            }
+        });
+
+        // 删除按钮事件
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //SQL
+                String strSQL = "";
+                if (txtId.getText() != null && !"".equals(txtId.getText().toString()))// 删除
+                {
+                    strSQL = "DELETE FROM t_credit_info WHERE ID=?";
+
+                    String[] values = new String[]{
+                            txtId.getText().toString()
+                    };
+
+                    db.execSQL(strSQL, values);
+
+                    myToast("删除成功!");
+                }
             }
         });
 
