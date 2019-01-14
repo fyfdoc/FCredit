@@ -19,11 +19,11 @@ public class DBHelper extends SQLiteOpenHelper {
             + " ,repayment_date"
             + " ,credit_comment)";
     public static final String CREATE_SWIPE_RECORD_INFO_TABLE="CREATE TABLE t_swipe_record_info "
-            + " id integer primary key autoincrement"
+            + " (id integer primary key autoincrement"
             + " ,card_id integer"
             + " ,swipe_date date"
             + " ,amounts decimal(8, 2)"
-            + " ,vendor_name text";
+            + " ,vendor_name text)";
 
     /**
      * 带全部参数的构造方法
