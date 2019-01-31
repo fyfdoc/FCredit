@@ -21,17 +21,13 @@ public class SwipeRecordAddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_swipe_record_add);
 
         // 当前Fragment
-        SwipeRecordAddFragment fragment = (SwipeRecordAddFragment) getSupportFragmentManager().findFragmentById(R.id.addCreditFragment);
+        SwipeRecordAddFragment fragment = (SwipeRecordAddFragment) getSupportFragmentManager().findFragmentById(R.id.addSwipeRecordFragment);
         if (bundle != null)
         {
             // 传递参数
             fragment.setArguments(bundle);
             fragment.initData();
         }
-
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
     }
 

@@ -128,50 +128,53 @@ public class CreditInfoFragment extends Fragment {
         while (cursor.moveToNext())
         {
             cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_credit_info, null);
-            // "操作"
+
+            // 操作
             TableCellTextView optTxt = cellLineLayout.findViewById(R.id.list_1_0);
             String tmpVal = String.valueOf("编辑");
             optTxt.setText(tmpVal);
-            // "序号"
+            // 序号
             TableCellTextView  txt = cellLineLayout.findViewById(R.id.list_1_1);
             tmpVal = String.valueOf(number);
             txt.setText(tmpVal);
-            // "卡名"
+            // id
+            txt =  cellLineLayout.findViewById(R.id.list_id);
+            tmpVal = cursor.getString(cursor.getColumnIndex("id"));
+            txt.setText(tmpVal);
+            // 卡名
             txt =  cellLineLayout.findViewById(R.id.list_1_2);
             tmpVal = cursor.getString(cursor.getColumnIndex("credit_name"));
             txt.setText(tmpVal);
-            // "卡号"
+            // 卡号
             txt =  cellLineLayout.findViewById(R.id.list_1_3);
             tmpVal = cursor.getString(cursor.getColumnIndex("credit_no"));
             txt.setText(tmpVal);
-            // "银行"
+            // 银行
             txt =  cellLineLayout.findViewById(R.id.list_1_4);
             txt.setText(cursor.getString(cursor.getColumnIndex("bank_name")));
-            // "额度"
+            // 额度
             txt =  cellLineLayout.findViewById(R.id.list_1_5);
             txt.setText(cursor.getString(cursor.getColumnIndex("credit_limit")));
             totalLimit += Integer.parseInt(cursor.getString(cursor.getColumnIndex("credit_limit")));
-            // "账单日"
+            // 账单日
             txt =  cellLineLayout.findViewById(R.id.list_1_6);
             txt.setText(cursor.getString(cursor.getColumnIndex("statement_date")));
-            // "还款日"
+            // 还款日
             txt =  cellLineLayout.findViewById(R.id.list_1_7);
             txt.setText(cursor.getString(cursor.getColumnIndex("repayment_date")));
-            // "备注"
+            // 备注
             txt =  cellLineLayout.findViewById(R.id.list_1_8);
             txt.setText(cursor.getString(cursor.getColumnIndex("credit_comment")));
 
             cellLayout.addView(cellLineLayout);
             number++;
 
-
             // 编辑点击事件
             optTxt.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    //TextView idText = view.findViewById(view.getId());
                     RelativeLayout line = (RelativeLayout) view.getParent();
-                    TextView idTxtV = line.findViewById(R.id.list_1_1);
+                    TextView idTxtV = line.findViewById(R.id.list_id);
                     String strId = idTxtV.getText().toString();
 
                     Intent intent = new Intent(getActivity(), AddCreditInfoActivity.class);

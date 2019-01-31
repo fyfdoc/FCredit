@@ -129,6 +129,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible"
-        android:id="@+id/txtCardId"/>
+        android:id="@+id/hidId"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:id="@+id/hidCardId"/>
 
 </LinearLayout>

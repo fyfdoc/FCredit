@@ -18,6 +18,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + " ,statement_date text"
             + " ,repayment_date text"
             + " ,credit_comment text)";
+
     public static final String CREATE_SWIPE_RECORD_INFO_TABLE="CREATE TABLE t_swipe_record_info "
             + " (id integer primary key autoincrement"
             + " ,card_id integer"

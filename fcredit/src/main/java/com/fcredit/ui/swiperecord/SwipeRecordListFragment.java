@@ -19,6 +19,8 @@ import com.fcredit.util.AppConstaint;
 import com.fcredit.util.DBHelper;
 import com.fcredit.widget.table.TableCellTextView;
 
+import java.math.BigDecimal;
+
 /**
  * 刷卡记录
  */
@@ -110,7 +112,7 @@ public class SwipeRecordListFragment extends Fragment {
 
         cellLayout.addView(cellLineLayout);
 
-        int totalLimit = 0;
+        BigDecimal totalSwipe = new BigDecimal(0);
         int number = 1;
         //数据库检索
         String strSQL = "SELECT A.id AS id, A.card_id , A.swipe_date , A.amounts, A.vendor_name, A.comment,"
@@ -126,19 +128,23 @@ public class SwipeRecordListFragment extends Fragment {
             TableCellTextView optTxt = cellLineLayout.findViewById(R.id.list_1_0);
             String tmpVal = String.valueOf("编辑");
             optTxt.setText(tmpVal);
-            // "序号"
+            // 序号
             TableCellTextView  txt = cellLineLayout.findViewById(R.id.list_1_1);
             tmpVal = String.valueOf(number);
             txt.setText(tmpVal);
-            // "卡名"
+            // id
+            txt =  cellLineLayout.findViewById(R.id.list_id);
+            tmpVal = cursor.getString(cursor.getColumnIndex("id"));
+            txt.setText(tmpVal);
+            // 卡名
             txt =  cellLineLayout.findViewById(R.id.list_1_2);
             tmpVal = cursor.getString(cursor.getColumnIndex("credit_name"));
             txt.setText(tmpVal);
-            // "卡号"
+            // 卡号
             txt =  cellLineLayout.findViewById(R.id.list_1_3);
             tmpVal = cursor.getString(cursor.getColumnIndex("credit_no"));
             txt.setText(tmpVal);
-            // "银行"
+            // 银行
             txt =  cellLineLayout.findViewById(R.id.list_1_4);
             txt.setText(cursor.getString(cursor.getColumnIndex("bank_name")));
             // 刷卡日期
@@ -147,7 +153,11 @@ public class SwipeRecordListFragment extends Fragment {
             // 金额
             txt =  cellLineLayout.findViewById(R.id.list_1_6);
             txt.setText(cursor.getString(cursor.getColumnIndex("amounts")));
-            totalLimit += Integer.parseInt(cursor.getString(cursor.getColumnIndex("amounts")));
+            //totalSwipe += Integer.parseInt(cursor.getString(cursor.getColumnIndex("amounts")));
+            totalSwipe = totalSwipe.add(
+                    new BigDecimal(cursor.getString(cursor.getColumnIndex("amounts"))));
+            // 保留2位小数
+            totalSwipe = totalSwipe.divide(new BigDecimal(1), 2, BigDecimal.ROUND_HALF_UP);
             // 商户
             txt =  cellLineLayout.findViewById(R.id.list_1_7);
             txt.setText(cursor.getString(cursor.getColumnIndex("vendor_name")));
@@ -165,10 +175,10 @@ public class SwipeRecordListFragment extends Fragment {
                 public void onClick(View view) {
                     //TextView idText = view.findViewById(view.getId());
                     RelativeLayout line = (RelativeLayout) view.getParent();
-                    TextView idTxtV = line.findViewById(R.id.list_1_1);
+                    TextView idTxtV = line.findViewById(R.id.list_id);
                     String strId = idTxtV.getText().toString();
 
-                    Intent intent = new Intent(getActivity(), AddCreditInfoActivity.class);
+                    Intent intent = new Intent(getActivity(), SwipeRecordAddActivity.class);
 
                     // 传参
                     Bundle bundle = new Bundle();
@@ -183,23 +193,23 @@ public class SwipeRecordListFragment extends Fragment {
 
         // 合计行
         cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_swipe_record, null);
-        // "合计"
+        // 合计
         TableCellTextView optTxtTotal = cellLineLayout.findViewById(R.id.list_1_0);
         String tmpVal = String.valueOf("合计");
         optTxtTotal.setText(tmpVal);
-        // "序号"
+        // 序号
         TableCellTextView txt = cellLineLayout.findViewById(R.id.list_1_1);
         tmpVal = String.valueOf("");
         txt.setText(tmpVal);
-        // "卡名"
+        // 卡名
         txt =  cellLineLayout.findViewById(R.id.list_1_2);
         tmpVal = "";
         txt.setText(tmpVal);
-        // "卡号"
+        // 卡号
         txt =  cellLineLayout.findViewById(R.id.list_1_3);
         tmpVal = "";
         txt.setText(tmpVal);
-        // "银行"
+        // 银行
         txt =  cellLineLayout.findViewById(R.id.list_1_4);
         txt.setText("");
         // 刷卡日期
@@ -207,11 +217,11 @@ public class SwipeRecordListFragment extends Fragment {
         txt.setText("");
         // 金额
         txt =  cellLineLayout.findViewById(R.id.list_1_6);
-        txt.setText(String.valueOf(totalLimit));
+        txt.setText(String.valueOf(totalSwipe));
         // 商户
         txt =  cellLineLayout.findViewById(R.id.list_1_7);
         txt.setText("");
-        // "备注"
+        // 备注
         txt =  cellLineLayout.findViewById(R.id.list_1_8);
         txt.setText("");
 

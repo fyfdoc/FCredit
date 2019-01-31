@@ -92,6 +92,10 @@
         <activity
             android:name=".ui.swiperecord.SwipeRecordAddActivity"
             android:label="@string/title_activity_swipe_record_add"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.cardlist.CardInfoListActivity"
+            android:label="@string/title_activity_card_info_list"
             android:theme="@style/AppTheme"></activity>
     </application>
 
