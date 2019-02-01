@@ -118,6 +118,7 @@
 
     <string name="section_credit_card">卡片信息</string>
     <string name="section_swipe_record">刷卡记录</string>
+    <string name="section_not_paid">本期应还</string>
     <string name="section_repayment_record">还款记录</string>
     <string name="section_repayment_date">待定</string>
 

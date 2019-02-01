@@ -28,7 +28,7 @@
     <string-array name="home_sections_credit">
         <item>@string/section_credit_card</item>
         <item>@string/section_swipe_record</item>
-        <item>@string/section_repayment_record</item>
+        <item>@string/section_not_paid</item>
         <item>@string/section_repayment_date</item>
         <item>@string/section_special_column</item>
     </string-array>

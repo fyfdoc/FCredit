@@ -9,6 +9,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private Context mContext;
 
+    // 信用卡信息表
     public static final String CREATE_CREDIT_INFO_TABLE = "CREATE TABLE t_credit_info ("
             + " id integer primary key autoincrement"
             + " ,credit_name text"
@@ -19,6 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + " ,repayment_date text"
             + " ,credit_comment text)";
 
+    // 刷卡记录表
     public static final String CREATE_SWIPE_RECORD_INFO_TABLE="CREATE TABLE t_swipe_record_info "
             + " (id integer primary key autoincrement"
             + " ,card_id integer"
@@ -26,6 +28,9 @@ public class DBHelper extends SQLiteOpenHelper {
             + " ,amounts decimal(8, 2)"
             + " ,vendor_name text"
             + " ,comment text)";
+
+    // 未还款汇总表
+    //public static final String CREATE_NOT_PAID_LIST_TABLE = "";
 
     /**
      * 带全部参数的构造方法

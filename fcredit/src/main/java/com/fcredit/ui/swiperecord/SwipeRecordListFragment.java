@@ -28,7 +28,7 @@ public class SwipeRecordListFragment extends Fragment {
     // 显示数据表的Layout
     private LinearLayout cellLayout;
     private RelativeLayout cellLineLayout;
-    private String[] ColName={"操作","序号","卡名","卡号","银行","刷卡日期", "金额", "商户", "备注"};
+    private String[] ColName={"操作","序号","卡名","刷卡日期", "金额", "商户","卡号","银行", "备注"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -73,40 +73,40 @@ public class SwipeRecordListFragment extends Fragment {
 
         //初始化标题,
         cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_swipe_record, null);
-        // "操作"
-        TableCellTextView title =  cellLineLayout.findViewById(R.id.list_1_0);
+        // 操作
+        TableCellTextView title =  cellLineLayout.findViewById(R.id.list_opt);
         title.setText(ColName[0]);
         title.setTextColor(Color.BLUE);
-        // "序号"
-        title =  cellLineLayout.findViewById(R.id.list_1_1);
+        // 序号
+        title =  cellLineLayout.findViewById(R.id.list_no);
         title.setText(ColName[1]);
         title.setTextColor(Color.BLUE);
-        // "卡名"
-        title = cellLineLayout.findViewById(R.id.list_1_2);
+        // 卡名
+        title = cellLineLayout.findViewById(R.id.list_card_name);
         title.setText(ColName[2]);
         title.setTextColor(Color.BLUE);
-        // "卡号"
-        title =  cellLineLayout.findViewById(R.id.list_1_3);
+        // 刷卡日期
+        title =  cellLineLayout.findViewById(R.id.list_swipe_date);
         title.setText(ColName[3]);
         title.setTextColor(Color.BLUE);
-        // "银行"
-        title =  cellLineLayout.findViewById(R.id.list_1_4);
+        // 金额
+        title =  cellLineLayout.findViewById(R.id.list_amounts);
         title.setText(ColName[4]);
         title.setTextColor(Color.BLUE);
-        // 刷卡日期
-        title =  cellLineLayout.findViewById(R.id.list_1_5);
+        // 商户
+        title =  cellLineLayout.findViewById(R.id.list_vendor_name);
         title.setText(ColName[5]);
         title.setTextColor(Color.BLUE);
-        // 金额
-        title =  cellLineLayout.findViewById(R.id.list_1_6);
+        // 卡号
+        title =  cellLineLayout.findViewById(R.id.list_card_no);
         title.setText(ColName[6]);
         title.setTextColor(Color.BLUE);
-        // 商户
-        title =  cellLineLayout.findViewById(R.id.list_1_7);
+        // 银行
+        title =  cellLineLayout.findViewById(R.id.list_bank);
         title.setText(ColName[7]);
         title.setTextColor(Color.BLUE);
-        // "备注"
-        title =  cellLineLayout.findViewById(R.id.list_1_8);
+        // 备注
+        title =  cellLineLayout.findViewById(R.id.list_comment);
         title.setText(ColName[8]);
         title.setTextColor(Color.BLUE);
 
@@ -118,18 +118,19 @@ public class SwipeRecordListFragment extends Fragment {
         String strSQL = "SELECT A.id AS id, A.card_id , A.swipe_date , A.amounts, A.vendor_name, A.comment,"
                 + " B.credit_name, B.credit_no, B.bank_name"
                 + " FROM t_swipe_record_info A left join t_credit_info B"
-                + " ON A.card_id=B.id ";
+                + " ON A.card_id=B.id "
+                + " ORDER BY A.swipe_date DESC";
 
         Cursor cursor = db.rawQuery(strSQL, null);
         while (cursor.moveToNext())
         {
             cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_swipe_record, null);
-            // "操作"
-            TableCellTextView optTxt = cellLineLayout.findViewById(R.id.list_1_0);
+            // 操作
+            TableCellTextView optTxt = cellLineLayout.findViewById(R.id.list_opt);
             String tmpVal = String.valueOf("编辑");
             optTxt.setText(tmpVal);
             // 序号
-            TableCellTextView  txt = cellLineLayout.findViewById(R.id.list_1_1);
+            TableCellTextView  txt = cellLineLayout.findViewById(R.id.list_no);
             tmpVal = String.valueOf(number);
             txt.setText(tmpVal);
             // id
@@ -137,21 +138,21 @@ public class SwipeRecordListFragment extends Fragment {
             tmpVal = cursor.getString(cursor.getColumnIndex("id"));
             txt.setText(tmpVal);
             // 卡名
-            txt =  cellLineLayout.findViewById(R.id.list_1_2);
+            txt =  cellLineLayout.findViewById(R.id.list_card_name);
             tmpVal = cursor.getString(cursor.getColumnIndex("credit_name"));
             txt.setText(tmpVal);
             // 卡号
-            txt =  cellLineLayout.findViewById(R.id.list_1_3);
+            txt =  cellLineLayout.findViewById(R.id.list_card_no);
             tmpVal = cursor.getString(cursor.getColumnIndex("credit_no"));
             txt.setText(tmpVal);
             // 银行
-            txt =  cellLineLayout.findViewById(R.id.list_1_4);
+            txt =  cellLineLayout.findViewById(R.id.list_bank);
             txt.setText(cursor.getString(cursor.getColumnIndex("bank_name")));
             // 刷卡日期
-            txt =  cellLineLayout.findViewById(R.id.list_1_5);
+            txt =  cellLineLayout.findViewById(R.id.list_swipe_date);
             txt.setText(cursor.getString(cursor.getColumnIndex("swipe_date")));
             // 金额
-            txt =  cellLineLayout.findViewById(R.id.list_1_6);
+            txt =  cellLineLayout.findViewById(R.id.list_amounts);
             txt.setText(cursor.getString(cursor.getColumnIndex("amounts")));
             //totalSwipe += Integer.parseInt(cursor.getString(cursor.getColumnIndex("amounts")));
             totalSwipe = totalSwipe.add(
@@ -159,10 +160,10 @@ public class SwipeRecordListFragment extends Fragment {
             // 保留2位小数
             totalSwipe = totalSwipe.divide(new BigDecimal(1), 2, BigDecimal.ROUND_HALF_UP);
             // 商户
-            txt =  cellLineLayout.findViewById(R.id.list_1_7);
+            txt =  cellLineLayout.findViewById(R.id.list_vendor_name);
             txt.setText(cursor.getString(cursor.getColumnIndex("vendor_name")));
             // 备注
-            txt =  cellLineLayout.findViewById(R.id.list_1_8);
+            txt =  cellLineLayout.findViewById(R.id.list_comment);
             txt.setText(cursor.getString(cursor.getColumnIndex("comment")));
 
             cellLayout.addView(cellLineLayout);
@@ -194,35 +195,35 @@ public class SwipeRecordListFragment extends Fragment {
         // 合计行
         cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_swipe_record, null);
         // 合计
-        TableCellTextView optTxtTotal = cellLineLayout.findViewById(R.id.list_1_0);
+        TableCellTextView optTxtTotal = cellLineLayout.findViewById(R.id.list_opt);
         String tmpVal = String.valueOf("合计");
         optTxtTotal.setText(tmpVal);
         // 序号
-        TableCellTextView txt = cellLineLayout.findViewById(R.id.list_1_1);
+        TableCellTextView txt = cellLineLayout.findViewById(R.id.list_no);
         tmpVal = String.valueOf("");
         txt.setText(tmpVal);
         // 卡名
-        txt =  cellLineLayout.findViewById(R.id.list_1_2);
+        txt =  cellLineLayout.findViewById(R.id.list_card_name);
         tmpVal = "";
         txt.setText(tmpVal);
         // 卡号
-        txt =  cellLineLayout.findViewById(R.id.list_1_3);
+        txt =  cellLineLayout.findViewById(R.id.list_card_no);
         tmpVal = "";
         txt.setText(tmpVal);
         // 银行
-        txt =  cellLineLayout.findViewById(R.id.list_1_4);
+        txt =  cellLineLayout.findViewById(R.id.list_bank);
         txt.setText("");
         // 刷卡日期
-        txt =  cellLineLayout.findViewById(R.id.list_1_5);
+        txt =  cellLineLayout.findViewById(R.id.list_swipe_date);
         txt.setText("");
         // 金额
-        txt =  cellLineLayout.findViewById(R.id.list_1_6);
+        txt =  cellLineLayout.findViewById(R.id.list_amounts);
         txt.setText(String.valueOf(totalSwipe));
         // 商户
-        txt =  cellLineLayout.findViewById(R.id.list_1_7);
+        txt =  cellLineLayout.findViewById(R.id.list_vendor_name);
         txt.setText("");
         // 备注
-        txt =  cellLineLayout.findViewById(R.id.list_1_8);
+        txt =  cellLineLayout.findViewById(R.id.list_comment);
         txt.setText("");
 
         cellLayout.addView(cellLineLayout);

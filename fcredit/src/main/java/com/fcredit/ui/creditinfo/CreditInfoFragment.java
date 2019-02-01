@@ -29,7 +29,7 @@ public class CreditInfoFragment extends Fragment {
     // 显示数据表的Layout
     private LinearLayout cellLayout;
     private RelativeLayout cellLineLayout;
-    private String[] ColName={"操作","序号","卡名","卡号","银行","额度", "账单日", "还款日", "备注"};
+    private String[] ColName={"操作","序号","卡名","额度", "账单日", "还款日","卡号","银行", "备注"};
 
 
     @Override
@@ -80,40 +80,40 @@ public class CreditInfoFragment extends Fragment {
 
         //初始化标题,
         cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_credit_info, null);
-        // "操作"
-        TableCellTextView title =  cellLineLayout.findViewById(R.id.list_1_0);
+        // 操作
+        TableCellTextView title =  cellLineLayout.findViewById(R.id.list_opt);
         title.setText(ColName[0]);
         title.setTextColor(Color.BLUE);
-        // "序号"
-        title =  cellLineLayout.findViewById(R.id.list_1_1);
+        // 序号
+        title =  cellLineLayout.findViewById(R.id.list_no);
         title.setText(ColName[1]);
         title.setTextColor(Color.BLUE);
-        // "卡名"
-        title = cellLineLayout.findViewById(R.id.list_1_2);
+        // 卡名
+        title = cellLineLayout.findViewById(R.id.list_card_name);
         title.setText(ColName[2]);
         title.setTextColor(Color.BLUE);
-        // "卡号"
-        title =  cellLineLayout.findViewById(R.id.list_1_3);
+        // 额度
+        title =  cellLineLayout.findViewById(R.id.list_limit);
         title.setText(ColName[3]);
         title.setTextColor(Color.BLUE);
-        // "银行"
-        title =  cellLineLayout.findViewById(R.id.list_1_4);
+        // 账单日
+        title =  cellLineLayout.findViewById(R.id.list_statement_date);
         title.setText(ColName[4]);
         title.setTextColor(Color.BLUE);
-        // "额度"
-        title =  cellLineLayout.findViewById(R.id.list_1_5);
+        // 还款日
+        title =  cellLineLayout.findViewById(R.id.list_repayment_date);
         title.setText(ColName[5]);
         title.setTextColor(Color.BLUE);
-        // "账单日"
-        title =  cellLineLayout.findViewById(R.id.list_1_6);
+        // 卡号
+        title =  cellLineLayout.findViewById(R.id.list_card_no);
         title.setText(ColName[6]);
         title.setTextColor(Color.BLUE);
-        // "还款日"
-        title =  cellLineLayout.findViewById(R.id.list_1_7);
+        // 银行
+        title =  cellLineLayout.findViewById(R.id.list_bank);
         title.setText(ColName[7]);
         title.setTextColor(Color.BLUE);
-        // "备注"
-        title =  cellLineLayout.findViewById(R.id.list_1_8);
+        // 备注
+        title =  cellLineLayout.findViewById(R.id.list_comment);
         title.setText(ColName[8]);
         title.setTextColor(Color.BLUE);
 
@@ -124,17 +124,17 @@ public class CreditInfoFragment extends Fragment {
         //数据库检索
         Cursor cursor = db.query("t_credit_info"
                 ,new String[]{"id", "credit_name","credit_no","bank_name","credit_limit", "statement_date","repayment_date", "credit_comment"}
-                ,null,null, null,null, null,null);
+                ,null,null, null,null, new String("statement_date ASC"),null);
         while (cursor.moveToNext())
         {
             cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_credit_info, null);
 
             // 操作
-            TableCellTextView optTxt = cellLineLayout.findViewById(R.id.list_1_0);
+            TableCellTextView optTxt = cellLineLayout.findViewById(R.id.list_opt);
             String tmpVal = String.valueOf("编辑");
             optTxt.setText(tmpVal);
             // 序号
-            TableCellTextView  txt = cellLineLayout.findViewById(R.id.list_1_1);
+            TableCellTextView  txt = cellLineLayout.findViewById(R.id.list_no);
             tmpVal = String.valueOf(number);
             txt.setText(tmpVal);
             // id
@@ -142,28 +142,28 @@ public class CreditInfoFragment extends Fragment {
             tmpVal = cursor.getString(cursor.getColumnIndex("id"));
             txt.setText(tmpVal);
             // 卡名
-            txt =  cellLineLayout.findViewById(R.id.list_1_2);
+            txt =  cellLineLayout.findViewById(R.id.list_card_name);
             tmpVal = cursor.getString(cursor.getColumnIndex("credit_name"));
             txt.setText(tmpVal);
             // 卡号
-            txt =  cellLineLayout.findViewById(R.id.list_1_3);
+            txt =  cellLineLayout.findViewById(R.id.list_card_no);
             tmpVal = cursor.getString(cursor.getColumnIndex("credit_no"));
             txt.setText(tmpVal);
             // 银行
-            txt =  cellLineLayout.findViewById(R.id.list_1_4);
+            txt =  cellLineLayout.findViewById(R.id.list_bank);
             txt.setText(cursor.getString(cursor.getColumnIndex("bank_name")));
             // 额度
-            txt =  cellLineLayout.findViewById(R.id.list_1_5);
+            txt =  cellLineLayout.findViewById(R.id.list_limit);
             txt.setText(cursor.getString(cursor.getColumnIndex("credit_limit")));
             totalLimit += Integer.parseInt(cursor.getString(cursor.getColumnIndex("credit_limit")));
             // 账单日
-            txt =  cellLineLayout.findViewById(R.id.list_1_6);
+            txt =  cellLineLayout.findViewById(R.id.list_statement_date);
             txt.setText(cursor.getString(cursor.getColumnIndex("statement_date")));
             // 还款日
-            txt =  cellLineLayout.findViewById(R.id.list_1_7);
+            txt =  cellLineLayout.findViewById(R.id.list_repayment_date);
             txt.setText(cursor.getString(cursor.getColumnIndex("repayment_date")));
             // 备注
-            txt =  cellLineLayout.findViewById(R.id.list_1_8);
+            txt =  cellLineLayout.findViewById(R.id.list_comment);
             txt.setText(cursor.getString(cursor.getColumnIndex("credit_comment")));
 
             cellLayout.addView(cellLineLayout);
@@ -193,43 +193,39 @@ public class CreditInfoFragment extends Fragment {
 
         // 合计行
         cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_credit_info, null);
-        // "合计"
-        TableCellTextView optTxtTotal = cellLineLayout.findViewById(R.id.list_1_0);
+        // 合计
+        TableCellTextView optTxtTotal = cellLineLayout.findViewById(R.id.list_opt);
         String tmpVal = String.valueOf("合计");
         optTxtTotal.setText(tmpVal);
-        // "序号"
-        TableCellTextView txt = cellLineLayout.findViewById(R.id.list_1_1);
+        // 序号
+        TableCellTextView txt = cellLineLayout.findViewById(R.id.list_no);
         tmpVal = String.valueOf("");
         txt.setText(tmpVal);
-        // "卡名"
-        txt =  cellLineLayout.findViewById(R.id.list_1_2);
+        // 卡名
+        txt =  cellLineLayout.findViewById(R.id.list_card_name);
         tmpVal = "";
         txt.setText(tmpVal);
-        // "卡号"
-        txt =  cellLineLayout.findViewById(R.id.list_1_3);
+        // 卡号
+        txt =  cellLineLayout.findViewById(R.id.list_card_no);
         tmpVal = "";
         txt.setText(tmpVal);
-        // "银行"
-        txt =  cellLineLayout.findViewById(R.id.list_1_4);
+        // 银行
+        txt =  cellLineLayout.findViewById(R.id.list_bank);
         txt.setText("");
-        // "额度"
-        txt =  cellLineLayout.findViewById(R.id.list_1_5);
+        // 额度
+        txt =  cellLineLayout.findViewById(R.id.list_limit);
         txt.setText(String.valueOf(totalLimit));
-        // "账单日"
-        txt =  cellLineLayout.findViewById(R.id.list_1_6);
+        // 账单日
+        txt =  cellLineLayout.findViewById(R.id.list_statement_date);
         txt.setText("");
-        // "还款日"
-        txt =  cellLineLayout.findViewById(R.id.list_1_7);
+        // 还款日
+        txt =  cellLineLayout.findViewById(R.id.list_repayment_date);
         txt.setText("");
-        // "备注"
-        txt =  cellLineLayout.findViewById(R.id.list_1_8);
+        // 备注
+        txt =  cellLineLayout.findViewById(R.id.list_comment);
         txt.setText("");
 
         cellLayout.addView(cellLineLayout);
-
-
-
-
 
     }
 
