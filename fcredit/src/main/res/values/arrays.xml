@@ -29,8 +29,8 @@
         <item>@string/section_credit_card</item>
         <item>@string/section_swipe_record</item>
         <item>@string/section_not_paid</item>
-        <item>@string/section_repayment_date</item>
-        <item>@string/section_special_column</item>
+        <item>@string/section_repayment_mark</item>
+        <item>@string/section_credit_item_mang</item>
     </string-array>
     <string-array name="live_entrance">
         <item>@string/nav_follow</item>

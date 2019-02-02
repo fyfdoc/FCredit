@@ -18,6 +18,7 @@ import com.fcredit.model.event.TabSelectedEvent;
 import com.fcredit.model.event.ToggleDrawerEvent;
 import com.fcredit.ui.bangumi.BangumiFragment;
 import com.fcredit.ui.creditinfo.CreditInfoFragment;
+import com.fcredit.ui.creditmang.CreditMangFragment;
 import com.fcredit.ui.live.LiveFragment;
 import com.fcredit.ui.nopaid.NotPaidListFragment;
 import com.fcredit.ui.recommed.RecommendFragment;
@@ -61,6 +62,8 @@ public class MainFragment extends BaseFragment {
     SwipeRecordListFragment mSwipeRecordListFragment = new SwipeRecordListFragment();
     // 本月应还
     NotPaidListFragment mNotPaidListFragment = new NotPaidListFragment();
+    // 贷款管理
+    CreditMangFragment mCreditMangFragment = new CreditMangFragment();
     @Inject
     BangumiFragment mBangumiFragment;
 
@@ -128,7 +131,7 @@ public class MainFragment extends BaseFragment {
         mFragments.add(mSwipeRecordListFragment);
         mFragments.add(mNotPaidListFragment);
         mFragments.add(new PlaceHolderFragment());
-        mFragments.add(new PlaceHolderFragment());
+        mFragments.add(mCreditMangFragment);
     }
 
     private class MainPagerAdapter extends FragmentPagerAdapter {

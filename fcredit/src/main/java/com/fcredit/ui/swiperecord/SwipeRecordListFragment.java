@@ -68,7 +68,7 @@ public class SwipeRecordListFragment extends Fragment {
     private void initData()
     {
         // 数据库
-        DBHelper dbHelper = new DBHelper(getContext(), AppConstaint.DB_NAME, null, 1);
+        DBHelper dbHelper = new DBHelper(getContext(), AppConstaint.DB_NAME, null, DBHelper.dbVer);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         //初始化标题,

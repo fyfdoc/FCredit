@@ -66,7 +66,7 @@ public class SwipeRecordAddFragment extends Fragment {
         }
 
         // 数据库
-        DBHelper dbHelper = new DBHelper(getContext(), AppConstaint.DB_NAME, null, 1);
+        DBHelper dbHelper = new DBHelper(getContext(), AppConstaint.DB_NAME, null, DBHelper.dbVer);
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         // 卡片名称点击事件
@@ -174,7 +174,7 @@ public class SwipeRecordAddFragment extends Fragment {
         final  EditText edtComment = view.findViewById(R.id.edtComment);
 
         // 数据库
-        DBHelper dbHelper = new DBHelper(getContext(), AppConstaint.DB_NAME, null, 1);
+        DBHelper dbHelper = new DBHelper(getContext(), AppConstaint.DB_NAME, null, DBHelper.dbVer);
         final SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         // 获取参数

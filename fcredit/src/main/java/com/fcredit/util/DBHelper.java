@@ -8,6 +8,8 @@ import android.widget.Toast;
 public class DBHelper extends SQLiteOpenHelper {
 
     private Context mContext;
+    // 数据库版本
+    public static int dbVer = 3;
 
     // 信用卡信息表
     public static final String CREATE_CREDIT_INFO_TABLE = "CREATE TABLE t_credit_info ("
@@ -29,8 +31,23 @@ public class DBHelper extends SQLiteOpenHelper {
             + " ,vendor_name text"
             + " ,comment text)";
 
-    // 未还款汇总表
-    //public static final String CREATE_NOT_PAID_LIST_TABLE = "";
+    // 贷款管理表
+    public static final String CREATE_CREDIT_MANG_TABLE = "CREATE TABLE t_credit_mang "
+            + " (id integer primary key autoincrement"
+            + " ,credit_name text" // 贷款名称
+            + " ,bank_name text"
+            + " ,repayment_date date" // 还款日
+            + " ,repay_month decimal(8, 2)" // 每月应还
+            + " ,interest_rate decimal(8, 3)" // 利率
+            + " ,credit_limit decimal(8, 2)" // 贷款总额
+            + " ,credit_length integer" // 贷款期限(月)
+            + " ,draw_date date" // 提款日期
+            + " ,current_end_date date" // 本期截止日
+            + " ,credit_length_start_date date" // 贷款有效期(开始)
+            + " ,credit_length_end_date date" // 贷款有效期(结束)
+            + " ,comment text)";
+
+
 
     /**
      * 带全部参数的构造方法
@@ -54,6 +71,7 @@ public class DBHelper extends SQLiteOpenHelper {
     {
         db.execSQL(CREATE_CREDIT_INFO_TABLE);
         db.execSQL(CREATE_SWIPE_RECORD_INFO_TABLE);
+        db.execSQL(CREATE_CREDIT_MANG_TABLE);
 
         Toast.makeText(mContext, "create succeeded", Toast.LENGTH_SHORT).show();
     }

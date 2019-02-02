@@ -28,9 +28,6 @@ public class AddCreditInfoActivity extends AppCompatActivity {
             fragment.initData();
         }
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
 
     }
 
