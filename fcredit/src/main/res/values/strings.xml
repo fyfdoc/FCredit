@@ -139,6 +139,10 @@
     <string name="credit_length_start_date">贷款有效期(开始)</string>
     <string name="credit_length_end_date">贷款有效期(结束)</string>
 
+    <!--还款标记-->
+    <string name="repaid">已还</string>
+    <string name="not_repay">未还</string>
+
     <!--button-->
     <string name="btn_save">保存</string>
     <string name="btn_delete">删除</string>

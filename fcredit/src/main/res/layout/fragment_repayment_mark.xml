@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.repaymentmark.RepaymentMarkFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/filter_bar_size"
+        android:background="@color/bg_main">
+
+        <TextView
+            android:id="@+id/today"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:foreground="@drawable/item_background"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/padding_22"
+            android:paddingRight="@dimen/padding_22"
+            android:text=""
+            android:textColor="@color/_text__white_dark"
+            android:textSize="@dimen/text_size_normal" />
+
+        <ImageView
+            android:id="@+id/attention_iv2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="@dimen/margin_small"
+            android:paddingRight="@dimen/margin_medium"
+            android:src="@drawable/ic_index_attention"
+            android:tint="@color/theme_color_primary" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/attention_iv2"
+            android:paddingLeft="@dimen/margin_medium"
+            android:paddingRight="@dimen/margin_small"
+            android:src="@drawable/ic_index_rank"
+            android:tint="@color/theme_color_primary" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_size_1dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_dark_alpha26" />
+
+    </RelativeLayout>
+
+    <!--表格滚动页面-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <HorizontalScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/repaymentMarkTable"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+
+        </HorizontalScrollView>
+    </ScrollView>
+
+</LinearLayout>

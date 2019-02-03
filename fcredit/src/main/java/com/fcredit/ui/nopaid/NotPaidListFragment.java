@@ -240,6 +240,7 @@ public class NotPaidListFragment extends Fragment {
             // 银行
             cell =  cellLineLayout.findViewById(R.id.list_bank);
             cell.setText(bank);
+            number++;
 
             cellLayout.addView(cellLineLayout);
 

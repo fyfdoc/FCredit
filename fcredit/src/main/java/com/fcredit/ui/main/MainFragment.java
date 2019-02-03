@@ -22,6 +22,7 @@ import com.fcredit.ui.creditmang.CreditMangFragment;
 import com.fcredit.ui.live.LiveFragment;
 import com.fcredit.ui.nopaid.NotPaidListFragment;
 import com.fcredit.ui.recommed.RecommendFragment;
+import com.fcredit.ui.repaymentmark.RepaymentMarkFragment;
 import com.fcredit.ui.swiperecord.SwipeRecordListFragment;
 import com.fcredit.ui.test.fragment.PlaceHolderFragment;
 
@@ -64,6 +65,8 @@ public class MainFragment extends BaseFragment {
     NotPaidListFragment mNotPaidListFragment = new NotPaidListFragment();
     // 贷款管理
     CreditMangFragment mCreditMangFragment = new CreditMangFragment();
+    // 还款标记
+    RepaymentMarkFragment mRepaymentMarkFragment = new RepaymentMarkFragment();
     @Inject
     BangumiFragment mBangumiFragment;
 
@@ -130,7 +133,7 @@ public class MainFragment extends BaseFragment {
         mFragments.add(mCreditInfoFragment);
         mFragments.add(mSwipeRecordListFragment);
         mFragments.add(mNotPaidListFragment);
-        mFragments.add(new PlaceHolderFragment());
+        mFragments.add(mRepaymentMarkFragment);
         mFragments.add(mCreditMangFragment);
     }
 

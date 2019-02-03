@@ -47,6 +47,11 @@ public class DBHelper extends SQLiteOpenHelper {
             + " ,credit_length_end_date date" // 贷款有效期(结束)
             + " ,comment text)";
 
+    // 还款标记表
+    public static final String CREATE_REPAYMENT_MARK_TABLE = "CREATE TABLE t_repayment_mark "
+            + " (id integer primary key autoincrement"
+            + " ,credit_id integer" // 贷款记录id/信用卡记录id
+            + " ,mark integer)"; // 还款标记 1:已还；2:未还
 
 
     /**

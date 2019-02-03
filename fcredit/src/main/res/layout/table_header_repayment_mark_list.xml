@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent"
+    >
+    <!--标记-->
+    <com.fcredit.widget.table.TableCellTextView
+        android:id="@+id/list_mark"
+        android:layout_width="50dp"
+        android:layout_height="@dimen/table_line_height"
+        android:layout_alignBottom="@+id/list_no"
+        android:layout_alignTop="@+id/list_no"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <!--序号-->
+    <com.fcredit.widget.table.TableCellTextView
+        android:id="@+id/list_no"
+        android:layout_width="50dp"
+        android:layout_height="@dimen/table_line_height"
+        android:layout_alignBottom="@+id/list_mark"
+        android:layout_alignTop="@+id/list_mark"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <!--卡名/贷款名-->
+    <com.fcredit.widget.table.TableCellTextView
+        android:id="@+id/list_credit_name"
+        android:layout_width="100dp"
+        android:layout_height="@dimen/table_line_height"
+        android:layout_toRightOf="@+id/list_no"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <!--还款日-->
+    <com.fcredit.widget.table.TableCellTextView
+        android:id="@+id/list_payment_date"
+        android:layout_width="50dp"
+        android:layout_height="@dimen/table_line_height"
+        android:layout_toRightOf="@+id/list_card_name"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <!--还款额-->
+    <com.fcredit.widget.table.TableCellTextView
+        android:id="@+id/list_not_paid_sum"
+        android:layout_width="100dp"
+        android:layout_height="@dimen/table_line_height"
+        android:layout_alignBottom="@+id/list_payment_date"
+        android:layout_alignTop="@+id/list_payment_date"
+        android:layout_toRightOf="@+id/list_payment_date"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <!--卡号-->
+    <com.fcredit.widget.table.TableCellTextView
+        android:id="@+id/list_card_no"
+        android:layout_width="100dp"
+        android:layout_height="@dimen/table_line_height"
+        android:layout_alignBottom="@+id/list_not_paid_sum"
+        android:layout_alignTop="@+id/list_not_paid_sum"
+        android:layout_toRightOf="@+id/list_not_paid_sum"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+    <!--银行-->
+    <com.fcredit.widget.table.TableCellTextView
+        android:id="@+id/list_bank"
+        android:layout_width="100dp"
+        android:layout_height="@dimen/table_line_height"
+        android:layout_alignBottom="@+id/list_card_no"
+        android:layout_alignTop="@+id/list_card_no"
+        android:layout_toRightOf="@+id/list_card_no"
+        android:gravity="center"
+        android:textColor="#000"
+        android:textSize="13sp" />
+
+</RelativeLayout>
