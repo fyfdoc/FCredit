@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.fcredit.R;
 import com.fcredit.util.AppConstaint;
+import com.fcredit.util.AppUtil;
 import com.fcredit.util.DBHelper;
 
 /**
@@ -83,10 +84,12 @@ public class AddCreditInfoFragment extends Fragment {
                 else // 插入
                 {
                     strSQL = "INSERT INTO t_credit_info";
-                    strSQL += " (credit_name, credit_no, bank_name, credit_limit, statement_date, repayment_date, credit_comment)";
-                    strSQL += " VALUES (?,?,?,?,?,?,?)";
+                    strSQL += " (id, credit_name, credit_no, bank_name, credit_limit, statement_date, repayment_date, credit_comment)";
+                    strSQL += " VALUES (?,?,?,?,?,?,?,?)";
                     // Values
-                    String[] values = new String[]{edtCreditName.getText().toString()
+                    String[] values = new String[]{
+                            AppUtil.getUUID()
+                            ,edtCreditName.getText().toString()
                             ,edtCreditNo.getText().toString()
                             ,edtBankName.getText().toString()
                             , edtCreditLimit.getText().toString()

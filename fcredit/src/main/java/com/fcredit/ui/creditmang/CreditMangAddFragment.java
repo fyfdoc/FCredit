@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.fcredit.R;
 import com.fcredit.util.AppConstaint;
+import com.fcredit.util.AppUtil;
 import com.fcredit.util.DBHelper;
 
 /**
@@ -97,12 +98,13 @@ public class CreditMangAddFragment extends Fragment {
                 else // 插入
                 {
                     strSQL = "INSERT INTO t_credit_mang";
-                    strSQL += " (credit_name, bank_name, repayment_date, repay_month, interest_rate, credit_limit";
+                    strSQL += " (id, credit_name, bank_name, repayment_date, repay_month, interest_rate, credit_limit";
                     strSQL += " ,credit_length, draw_date, current_end_date, credit_length_start_date, credit_length_end_date, comment)";
-                    strSQL += " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                    strSQL += " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
                     // Values
                     String[] values = new String[]{
-                            edtCreditName.getText().toString()
+                            AppUtil.getUUID()
+                            ,edtCreditName.getText().toString()
                             ,edtBankName.getText().toString()
                             ,edtRepaymentDate.getText().toString()
                             , edtRepayMonth.getText().toString()

@@ -19,6 +19,7 @@ import com.fcredit.R;
 import com.fcredit.ui.cardlist.CardInfoListActivity;
 import com.fcredit.ui.creditinfo.AddCreditInfoActivity;
 import com.fcredit.util.AppConstaint;
+import com.fcredit.util.AppUtil;
 import com.fcredit.util.DBHelper;
 
 /**
@@ -110,10 +111,12 @@ public class SwipeRecordAddFragment extends Fragment {
                 else // 插入
                 {
                     strSQL = "INSERT INTO t_swipe_record_info";
-                    strSQL += " (card_id, swipe_date, amounts, vendor_name, comment)";
-                    strSQL += " VALUES (?,?,?,?,?)";
+                    strSQL += " (id, card_id, swipe_date, amounts, vendor_name, comment)";
+                    strSQL += " VALUES (?,?,?,?,?,?)";
                     // Values
-                    String[] values = new String[]{edtCardId.getText().toString()
+                    String[] values = new String[]{
+                            AppUtil.getUUID()
+                            ,edtCardId.getText().toString()
                             ,edtSwipeDate.getText().toString()
                             ,edtAmounts.getText().toString()
                             , edtVendorName.getText().toString()

@@ -9,23 +9,23 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private Context mContext;
     // 数据库版本
-    public static int dbVer = 3;
+    public static int dbVer = 4;
 
     // 信用卡信息表
     public static final String CREATE_CREDIT_INFO_TABLE = "CREATE TABLE t_credit_info ("
-            + " id integer primary key autoincrement"
-            + " ,credit_name text"
-            + " ,credit_no text"
-            + " ,bank_name text"
-            + " ,credit_limit integer"
-            + " ,statement_date text"
-            + " ,repayment_date text"
-            + " ,credit_comment text)";
+            + " id text primary key"
+            + " ,credit_name text" // 卡片名称
+            + " ,credit_no text" // 卡号
+            + " ,bank_name text" // 银行
+            + " ,credit_limit integer" // 额度
+            + " ,statement_date text" // 账单日
+            + " ,repayment_date text" // 还款日
+            + " ,credit_comment text)"; // 备注
 
     // 刷卡记录表
     public static final String CREATE_SWIPE_RECORD_INFO_TABLE="CREATE TABLE t_swipe_record_info "
-            + " (id integer primary key autoincrement"
-            + " ,card_id integer"
+            + " (id text primary key"
+            + " ,card_id text" // 卡片记录id
             + " ,swipe_date date"
             + " ,amounts decimal(8, 2)"
             + " ,vendor_name text"
@@ -33,7 +33,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // 贷款管理表
     public static final String CREATE_CREDIT_MANG_TABLE = "CREATE TABLE t_credit_mang "
-            + " (id integer primary key autoincrement"
+            + " (id text primary key"
             + " ,credit_name text" // 贷款名称
             + " ,bank_name text"
             + " ,repayment_date date" // 还款日
@@ -49,9 +49,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // 还款标记表
     public static final String CREATE_REPAYMENT_MARK_TABLE = "CREATE TABLE t_repayment_mark "
-            + " (id integer primary key autoincrement"
-            + " ,credit_id integer" // 贷款记录id/信用卡记录id
-            + " ,mark integer)"; // 还款标记 1:已还；2:未还
+            + " (id text primary key"
+            + " ,credit_id text)"; // 贷款记录id或信用卡记录id
 
 
     /**
@@ -74,9 +73,11 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
+        // 创建表
         db.execSQL(CREATE_CREDIT_INFO_TABLE);
         db.execSQL(CREATE_SWIPE_RECORD_INFO_TABLE);
         db.execSQL(CREATE_CREDIT_MANG_TABLE);
+        db.execSQL(CREATE_REPAYMENT_MARK_TABLE);
 
         Toast.makeText(mContext, "create succeeded", Toast.LENGTH_SHORT).show();
     }
@@ -92,6 +93,18 @@ public class DBHelper extends SQLiteOpenHelper {
     {
         //db.execSQL("delete from t_swipe_record_info");
         //db.execSQL(CREATE_SWIPE_RECORD_INFO_TABLE);
+        // 删除表
+        db.execSQL("DROP TABLE t_credit_info ");
+        db.execSQL("DROP TABLE t_swipe_record_info ");
+        db.execSQL("DROP TABLE t_credit_mang ");
+        db.execSQL("DROP TABLE t_repayment_mark ");
+
+        // 创建表
+        db.execSQL(CREATE_CREDIT_INFO_TABLE);
+        db.execSQL(CREATE_SWIPE_RECORD_INFO_TABLE);
+        db.execSQL(CREATE_CREDIT_MANG_TABLE);
+        db.execSQL(CREATE_REPAYMENT_MARK_TABLE);
+
 
         // 在这里面可以把旧的表 drop掉 从新创建新表，
         // 但如果数据比较重要更好的做法还是把旧表的数据迁移到新表上

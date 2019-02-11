@@ -61,7 +61,7 @@ public class MainFragment extends BaseFragment {
     CreditInfoFragment mCreditInfoFragment = new CreditInfoFragment();
     // 刷卡记录
     SwipeRecordListFragment mSwipeRecordListFragment = new SwipeRecordListFragment();
-    // 本月应还
+    // 本期未还
     NotPaidListFragment mNotPaidListFragment = new NotPaidListFragment();
     // 贷款管理
     CreditMangFragment mCreditMangFragment = new CreditMangFragment();
