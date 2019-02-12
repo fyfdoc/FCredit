@@ -276,6 +276,10 @@ public class RepaymentMarkFragment extends Fragment {
         for (RepaymentMark item: markList) {
             //行数据,
             cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_body_repayment_mark_list, null);
+            if (intIndex % 2 == 1)
+            {
+                cellLineLayout.setBackgroundColor(getResources().getColor(R.color.white_table_line));
+            }
 
             // 标记
             Switch markSwitch = cellLineLayout.findViewById(R.id.list_mark);

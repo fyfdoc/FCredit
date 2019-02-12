@@ -214,6 +214,11 @@ public class NotPaidListFragment extends Fragment {
 
             //数据表,
             cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_not_paid_list, null);
+            if (number % 2 == 1)
+            {
+                cellLineLayout.setBackgroundColor(getResources().getColor(R.color.white_table_line));
+            }
+
             // 序号
             TableCellTextView cell =  cellLineLayout.findViewById(R.id.list_no);
             String tmpVal = String.valueOf(number);

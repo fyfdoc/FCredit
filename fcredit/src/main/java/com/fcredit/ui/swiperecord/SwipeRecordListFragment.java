@@ -116,10 +116,16 @@ public class SwipeRecordListFragment extends Fragment {
         while (cursor.moveToNext())
         {
             cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_swipe_record, null);
+            if (number % 2 == 1)
+            {
+                cellLineLayout.setBackgroundColor(getResources().getColor(R.color.white_table_line));
+            }
             // 操作
             TableCellTextView optTxt = cellLineLayout.findViewById(R.id.list_opt);
             String tmpVal = String.valueOf("编辑");
             optTxt.setText(tmpVal);
+            optTxt.setTextColor(getResources().getColor(R.color.opt_item_color));
+
             // 序号
             TableCellTextView  txt = cellLineLayout.findViewById(R.id.list_no);
             tmpVal = String.valueOf(number);

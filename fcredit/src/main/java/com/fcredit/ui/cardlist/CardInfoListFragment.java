@@ -97,10 +97,16 @@ public class CardInfoListFragment extends Fragment {
         while (cursor.moveToNext())
         {
             cellLineLayout = (RelativeLayout) LayoutInflater.from(getActivity()).inflate(R.layout.table_header_card_info_list, null);
+            if (number % 2 == 1)
+            {
+                cellLineLayout.setBackgroundColor(getResources().getColor(R.color.white_table_line));
+            }
+
             // 操作
             TableCellTextView  optTxt = cellLineLayout.findViewById(R.id.list_opt);
             String tmpVal = "选择";
             optTxt.setText(tmpVal);
+            optTxt.setTextColor(getResources().getColor(R.color.opt_item_color));
             // 序号
             TableCellTextView txt = cellLineLayout.findViewById(R.id.list_num);
             tmpVal = String.valueOf(number);

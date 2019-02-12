@@ -413,4 +413,7 @@
     <color name="colorAccent_green">#00D083</color>
     <color name="gray_8f">#8f8f8f</color><!--灰色8f -->
     <color name="blue_little">#5BC0DE</color>
+    <color name="white_table_line">#fff2f2f2</color><!-- fff2f2f2 #ffdceff7 -->
+    <color name="opt_item_color">#5BC0DE</color><!-- fffb7299 -->
+
 </resources>
