@@ -407,4 +407,10 @@
     <color name="transparent">#00000000</color>
     <color name="tab_unselected_color">#AAffffff</color>
     <color name="et_search_bg_live">#E7E7E7</color>
+
+    <color name="theme_color_black">#333C49</color>
+    <color name="colorAccent_black">#de2c4457</color>
+    <color name="colorAccent_green">#00D083</color>
+    <color name="gray_8f">#8f8f8f</color><!--灰色8f -->
+    <color name="blue_little">#5BC0DE</color>
 </resources>

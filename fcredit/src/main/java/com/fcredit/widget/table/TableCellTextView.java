@@ -20,7 +20,7 @@ public class TableCellTextView extends AppCompatTextView {
         super(context, attrs);
 //        int color = Color.parseColor("#80b9f2");
         // 为边框设置颜色
-        paint.setColor(ContextCompat.getColor(context, R.color.colorAccent));
+        paint.setColor(ContextCompat.getColor(context, R.color.gray_8f));
     }
 
 
