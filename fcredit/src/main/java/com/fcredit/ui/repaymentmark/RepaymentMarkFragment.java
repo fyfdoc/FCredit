@@ -27,6 +27,8 @@ import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -265,6 +267,9 @@ public class RepaymentMarkFragment extends Fragment {
 
         } // end while
 
+        // 按还款日排序
+        Collections.sort(markList);
+
         int intIndex = 1;
         BigDecimal paymentTotal = new BigDecimal(0);
         // 显示数据
@@ -274,6 +279,7 @@ public class RepaymentMarkFragment extends Fragment {
 
             // 标记
             Switch markSwitch = cellLineLayout.findViewById(R.id.list_mark);
+            markSwitch.setId(intIndex+100);// 类似按钮等有状态的控件一定要设置上id，否则系统会给设置上重复的id，页面切换设置状态时会崩溃
             if (item.getMark() == 1) {
                 markSwitch.setChecked(true);
             } else
@@ -311,7 +317,8 @@ public class RepaymentMarkFragment extends Fragment {
 
             // 序号
             TableCellTextView cell =  cellLineLayout.findViewById(R.id.list_no);
-            cell.setText(String.valueOf(intIndex));
+            // 因为“标记”项设置了动态id，xml无法设置对齐方式，为了对齐才加了这么多空格
+            cell.setText("                 " + String.valueOf(intIndex));
 
             // 卡名/贷款名id
             cell =  cellLineLayout.findViewById(R.id.list_credit_id);

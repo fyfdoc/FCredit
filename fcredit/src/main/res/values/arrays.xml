@@ -3,7 +3,7 @@
     <string-array name="main_sections">
         <item>@string/section_home</item>
         <item>@string/section_region</item>
-        <item>@string/section_dynamic</item>
+        <item>@string/section_coast</item>
         <item>@string/section_message</item>
     </string-array>
     <integer-array name="main_selected_sections_pic">

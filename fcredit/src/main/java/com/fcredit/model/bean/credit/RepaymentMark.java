@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * 还款记录
  */
-public class RepaymentMark {
+public class RepaymentMark implements Comparable<RepaymentMark>{
     // 信用卡/贷款记录id
     private String creditId;
     // 标记
@@ -75,5 +75,17 @@ public class RepaymentMark {
 
     public void setBankName(String bankName) {
         this.bankName = bankName;
+    }
+
+
+    @Override
+    public int compareTo(RepaymentMark repaymentMark)
+    {
+        if (Integer.parseInt(this.paymentDate) > Integer.parseInt(repaymentMark.getPaymentDate()))
+        {
+            return 1;
+        }
+
+        return -1;
     }
 }

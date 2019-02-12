@@ -19,7 +19,7 @@
     <!--序号-->
     <com.fcredit.widget.table.TableCellTextView
         android:id="@+id/list_no"
-        android:layout_width="50dp"
+        android:layout_width="115dp"
         android:layout_height="@dimen/table_line_height"
         android:layout_toRightOf="@+id/list_mark"
         android:gravity="center"

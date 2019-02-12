@@ -11,12 +11,13 @@
     <string name="charge_no_data_tips">╮(╯3╰)╭再怎么找也没有啦</string>
     <string name="upper_load_failed_with_click">加载失败,请点击重新尝试</string>
     <string name="tips_load_error">加载失败了Σ(OДO</string>
-    <string name="section_region">统计</string>
 
     <!-- Main -->
     <string name="section_home">首页</string>
     <string name="section_dynamic">动态</string>
     <string name="section_message">消息</string>
+    <string name="section_region">统计</string>
+    <string name="section_coast">成本</string>
 
     <!-- Home -->
     <string name="home_top_default_nickname">未登录</string>
@@ -130,9 +131,9 @@
 
     <!--贷款管理-->
     <string name="credit_item_name">贷款名称</string>
-    <string name="repay_month">每月应还</string>
+    <string name="repay_month">每月应还(元)</string>
     <string name="interest_rate">利率</string>
-    <string name="credit_item_limit">贷款总额</string>
+    <string name="credit_item_limit">贷款总额(万)</string>
     <string name="credit_length">贷款期限(月)</string>
     <string name="draw_date">提款日期</string>
     <string name="current_end_date">本期截止日</string>
