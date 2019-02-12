@@ -18,6 +18,7 @@ public class TableCellTextView extends AppCompatTextView {
 
     public TableCellTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        setTextColor(getResources().getColor(R.color._text__gray_dark));
 //        int color = Color.parseColor("#80b9f2");
         // 为边框设置颜色
         paint.setColor(ContextCompat.getColor(context, R.color.gray_8f));

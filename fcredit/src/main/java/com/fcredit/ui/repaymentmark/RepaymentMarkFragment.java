@@ -81,31 +81,31 @@ public class RepaymentMarkFragment extends Fragment {
         // 标记
         TableCellTextView title =  cellLineLayout.findViewById(R.id.list_mark);
         title.setText(ColName[0]);
-        title.setTextColor(Color.BLUE);
+
         // 序号
         title =  cellLineLayout.findViewById(R.id.list_no);
         title.setText(ColName[1]);
-        title.setTextColor(Color.BLUE);
+
         // 卡名/贷款名
         title =  cellLineLayout.findViewById(R.id.list_credit_name);
         title.setText(ColName[2]);
-        title.setTextColor(Color.BLUE);
+
         // 还款日
         title = cellLineLayout.findViewById(R.id.list_payment_date);
         title.setText(ColName[3]);
-        title.setTextColor(Color.BLUE);
+
         // 还款额
         title =  cellLineLayout.findViewById(R.id.list_not_paid_sum);
         title.setText(ColName[4]);
-        title.setTextColor(Color.BLUE);
+
         // 卡号
         title =  cellLineLayout.findViewById(R.id.list_card_no);
         title.setText(ColName[5]);
-        title.setTextColor(Color.BLUE);
+
         // 银行
         title =  cellLineLayout.findViewById(R.id.list_bank);
         title.setText(ColName[6]);
-        title.setTextColor(Color.BLUE);
+
 
         cellLayout.addView(cellLineLayout);
 

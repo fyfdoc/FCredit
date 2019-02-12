@@ -65,27 +65,27 @@ public class CardInfoListFragment extends Fragment {
         // 操作
         TableCellTextView title =  cellLineLayout.findViewById(R.id.list_opt);
         title.setText(ColName[0]);
-        title.setTextColor(Color.BLUE);
+
         // 序号
         title =  cellLineLayout.findViewById(R.id.list_num);
         title.setText(ColName[1]);
-        title.setTextColor(Color.BLUE);
+
         // 卡名
         title =  cellLineLayout.findViewById(R.id.list_card_name);
         title.setText(ColName[2]);
-        title.setTextColor(Color.BLUE);
+
         // 卡号
         title = cellLineLayout.findViewById(R.id.list_card_no);
         title.setText(ColName[3]);
-        title.setTextColor(Color.BLUE);
+
         // 银行
         title =  cellLineLayout.findViewById(R.id.list_bank);
         title.setText(ColName[4]);
-        title.setTextColor(Color.BLUE);
+
         // 备注
         title =  cellLineLayout.findViewById(R.id.list_comment);
         title.setText(ColName[5]);
-        title.setTextColor(Color.BLUE);
+
 
         cellLayout.addView(cellLineLayout);
 

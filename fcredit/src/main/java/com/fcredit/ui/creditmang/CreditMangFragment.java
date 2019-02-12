@@ -81,59 +81,59 @@ public class CreditMangFragment extends Fragment {
         // 操作
         TableCellTextView title =  cellLineLayout.findViewById(R.id.list_opt);
         title.setText(ColName[0]);
-        title.setTextColor(Color.BLUE);
+
         // 序号
         title =  cellLineLayout.findViewById(R.id.list_no);
         title.setText(ColName[1]);
-        title.setTextColor(Color.BLUE);
+
         // 贷款名称
         title = cellLineLayout.findViewById(R.id.list_credit_name);
         title.setText(ColName[2]);
-        title.setTextColor(Color.BLUE);
+
         // 银行
         title =  cellLineLayout.findViewById(R.id.list_bank);
         title.setText(ColName[3]);
-        title.setTextColor(Color.BLUE);
+
         // 还款日
         title =  cellLineLayout.findViewById(R.id.list_repayment_date);
         title.setText(ColName[4]);
-        title.setTextColor(Color.BLUE);
+
         // 每月应还
         title =  cellLineLayout.findViewById(R.id.list_repay_month);
         title.setText(ColName[5]);
-        title.setTextColor(Color.BLUE);
+
         // 利率
         title =  cellLineLayout.findViewById(R.id.list_interest_rate);
         title.setText(ColName[6]);
-        title.setTextColor(Color.BLUE);
+
         // 贷款总额
         title =  cellLineLayout.findViewById(R.id.list_credit_limit);
         title.setText(ColName[7]);
-        title.setTextColor(Color.BLUE);
+
         // 贷款期限(月)
         title =  cellLineLayout.findViewById(R.id.list_credit_length);
         title.setText(ColName[8]);
-        title.setTextColor(Color.BLUE);
+
         // 提款日期
         title =  cellLineLayout.findViewById(R.id.list_draw_date);
         title.setText(ColName[9]);
-        title.setTextColor(Color.BLUE);
+
         // 本期截止日
         title =  cellLineLayout.findViewById(R.id.list_current_end_date);
         title.setText(ColName[10]);
-        title.setTextColor(Color.BLUE);
+
         // 贷款有效期(开始)
         title =  cellLineLayout.findViewById(R.id.list_credit_length_start_date);
         title.setText(ColName[11]);
-        title.setTextColor(Color.BLUE);
+
         // 贷款有效期(结束)
         title =  cellLineLayout.findViewById(R.id.list_credit_length_end_date);
         title.setText(ColName[12]);
-        title.setTextColor(Color.BLUE);
+
         // 备注
         title =  cellLineLayout.findViewById(R.id.list_comment);
         title.setText(ColName[13]);
-        title.setTextColor(Color.BLUE);
+
 
         cellLayout.addView(cellLineLayout);
 
