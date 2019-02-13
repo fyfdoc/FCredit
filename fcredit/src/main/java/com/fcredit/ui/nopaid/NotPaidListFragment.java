@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.fcredit.R;
 import com.fcredit.ui.swiperecord.SwipeRecordAddActivity;
 import com.fcredit.util.AppConstaint;
+import com.fcredit.util.AppUtil;
 import com.fcredit.util.DBHelper;
 import com.fcredit.widget.table.TableCellTextView;
 
@@ -186,7 +187,7 @@ public class NotPaidListFragment extends Fragment {
             while (notPaidSumCursor.moveToNext())// 只有一条记录
             {
 
-                notPaidSum = new BigDecimal(notPaidSumCursor.getString(notPaidSumCursor.getColumnIndex("amounts_sum")));
+                notPaidSum = AppUtil.string2BigDecimal(notPaidSumCursor.getString(notPaidSumCursor.getColumnIndex("amounts_sum")));
             }
             // 保留2位小数
             notPaidSum = notPaidSum.divide(new BigDecimal(1), 2, BigDecimal.ROUND_HALF_UP);
@@ -205,7 +206,7 @@ public class NotPaidListFragment extends Fragment {
             BigDecimal swipeSum = new BigDecimal(0);
             while (swipeSumCursor.moveToNext())
             {
-                swipeSum = new BigDecimal(swipeSumCursor.getString(swipeSumCursor.getColumnIndex("amounts_sum")));
+                swipeSum = AppUtil.string2BigDecimal(swipeSumCursor.getString(swipeSumCursor.getColumnIndex("amounts_sum")));
             }
             // 保留2位小数
             swipeSum = swipeSum.divide(new BigDecimal(1), 2, BigDecimal.ROUND_HALF_UP);

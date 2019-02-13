@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.fcredit.R;
 import com.fcredit.ui.creditinfo.AddCreditInfoActivity;
 import com.fcredit.util.AppConstaint;
+import com.fcredit.util.AppUtil;
 import com.fcredit.util.DBHelper;
 import com.fcredit.widget.table.TableCellTextView;
 
@@ -153,7 +154,7 @@ public class SwipeRecordListFragment extends Fragment {
             txt.setText(cursor.getString(cursor.getColumnIndex("amounts")));
             //totalSwipe += Integer.parseInt(cursor.getString(cursor.getColumnIndex("amounts")));
             totalSwipe = totalSwipe.add(
-                    new BigDecimal(cursor.getString(cursor.getColumnIndex("amounts"))));
+                    AppUtil.string2BigDecimal(cursor.getString(cursor.getColumnIndex("amounts"))));
             // 保留2位小数
             totalSwipe = totalSwipe.divide(new BigDecimal(1), 2, BigDecimal.ROUND_HALF_UP);
             // 商户

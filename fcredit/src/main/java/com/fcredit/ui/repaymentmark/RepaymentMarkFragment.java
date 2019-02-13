@@ -189,7 +189,7 @@ public class RepaymentMarkFragment extends Fragment {
             while (notPaidSumCursor.moveToNext())// 只有一条记录
             {
 
-                notPaidSum = new BigDecimal(notPaidSumCursor.getString(notPaidSumCursor.getColumnIndex("amounts_sum")));
+                notPaidSum = AppUtil.string2BigDecimal(notPaidSumCursor.getString(notPaidSumCursor.getColumnIndex("amounts_sum")));
             }
             // 保留2位小数
             notPaidSum = notPaidSum.divide(new BigDecimal(1), 2, BigDecimal.ROUND_HALF_UP);
@@ -227,7 +227,7 @@ public class RepaymentMarkFragment extends Fragment {
             repaymentMark.setCreditId(id);
             repaymentMark.setCreditName(creditName);
             repaymentMark.setPaymentDate(String.valueOf(repaymentDate));
-            repaymentMark.setNotPaidSum(new BigDecimal(strRepayMonth));
+            repaymentMark.setNotPaidSum(AppUtil.string2BigDecimal(strRepayMonth));
             repaymentMark.setCardNo("");
             repaymentMark.setMark(2);// 未还
             repaymentMark.setBankName(bank);

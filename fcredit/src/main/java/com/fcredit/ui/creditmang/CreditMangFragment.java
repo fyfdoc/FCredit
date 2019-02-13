@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.fcredit.R;
 import com.fcredit.ui.creditinfo.AddCreditInfoActivity;
 import com.fcredit.util.AppConstaint;
+import com.fcredit.util.AppUtil;
 import com.fcredit.util.DBHelper;
 import com.fcredit.widget.table.TableCellTextView;
 
@@ -179,8 +180,9 @@ public class CreditMangFragment extends Fragment {
             txt.setText(cursor.getString(cursor.getColumnIndex("repayment_date")));
             // 每月应还
             txt =  cellLineLayout.findViewById(R.id.list_repay_month);
-            txt.setText(cursor.getString(cursor.getColumnIndex("repay_month")));
-            totalRepayMonth = totalRepayMonth.add(new BigDecimal(cursor.getString(cursor.getColumnIndex("repay_month"))));
+            String strVal = cursor.getString(cursor.getColumnIndex("repay_month"));
+            txt.setText(strVal);
+            totalRepayMonth = totalRepayMonth.add(AppUtil.string2BigDecimal(strVal));
             // 保留2位小数
             totalRepayMonth = totalRepayMonth.divide(new BigDecimal(1), 2, BigDecimal.ROUND_HALF_UP);
             // 利率
@@ -188,8 +190,9 @@ public class CreditMangFragment extends Fragment {
             txt.setText(cursor.getString(cursor.getColumnIndex("interest_rate")));
             // 贷款总额
             txt =  cellLineLayout.findViewById(R.id.list_credit_limit);
-            txt.setText(cursor.getString(cursor.getColumnIndex("credit_limit")));
-            totalCreditLimit = totalCreditLimit.add(new BigDecimal(cursor.getString(cursor.getColumnIndex("credit_limit"))));
+            strVal = cursor.getString(cursor.getColumnIndex("credit_limit"));
+            txt.setText(strVal);
+            totalCreditLimit = totalCreditLimit.add(AppUtil.string2BigDecimal(strVal));
             // 保留2位小数
             totalCreditLimit = totalCreditLimit.divide(new BigDecimal(1),2, BigDecimal.ROUND_HALF_UP);
             // 贷款期限(月)
