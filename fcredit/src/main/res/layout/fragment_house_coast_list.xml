@@ -53,5 +53,31 @@
 
     </RelativeLayout>
 
+    <!--表格滚动页面-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <HorizontalScrollView
+            android:id="@+id/scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarAlwaysDrawHorizontalTrack="false"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/houseCoastTable"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        </HorizontalScrollView>
+    </ScrollView>
+
 
 </LinearLayout>
