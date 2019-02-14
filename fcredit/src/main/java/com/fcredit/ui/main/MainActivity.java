@@ -15,6 +15,7 @@ import com.fcredit.R;
 import com.fcredit.model.event.TabSelectedEvent;
 import com.fcredit.model.event.ToggleDrawerEvent;
 import com.fcredit.ui.region.RegionFragment;
+import com.fcredit.ui.statistics.StatisticsFragment;
 import com.fcredit.widget.bottombar.TabEntity;
 import com.fcredit.ui.test.fragment.PlaceHolderFragment;
 import com.fcredit.widget.bottombar.BottomBar;
@@ -55,6 +56,8 @@ public class MainActivity extends BaseActivity implements IBaseMvpActivity<MainP
     FrameLayout mFrameLayout;
     @BindView(R.id.main_nav_view)
     NavigationView mNavigationView;
+
+    StatisticsFragment statisticsFragment = new StatisticsFragment();
 
     private SupportFragment[] mFragments = new SupportFragment[4];
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
@@ -126,7 +129,8 @@ public class MainActivity extends BaseActivity implements IBaseMvpActivity<MainP
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFragments[FIRST] = mainFragment;
-        mFragments[SECOND] = regionFragment;
+        //mFragments[SECOND] = regionFragment;
+        mFragments[SECOND] = statisticsFragment;
         mFragments[THIRD] = new PlaceHolderFragment();
         mFragments[FOURTH] = new PlaceHolderFragment();
         loadMultipleRootFragment(R.id.main_container, 0,

@@ -200,7 +200,7 @@ public class RepaymentMarkFragment extends Fragment {
             repaymentMark.setCreditId(id);
             repaymentMark.setCreditName(cardName);
             repaymentMark.setPaymentDate(String.valueOf(repaymentDate));
-            repaymentMark.setNotPaidSum(notPaidTotal);
+            repaymentMark.setNotPaidSum(notPaidSum);
             repaymentMark.setCardNo(cardNo);
             repaymentMark.setMark(2);// 未还
             repaymentMark.setBankName(bank);

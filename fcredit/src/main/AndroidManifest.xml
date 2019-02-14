@@ -100,7 +100,8 @@
         <activity
             android:name=".ui.creditmang.CreditMangAddActivity"
             android:label="@string/title_activity_credit_mang"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity android:name=".ui.housecoast.HouseCoastListActivity"></activity>
     </application>
 
 </manifest>

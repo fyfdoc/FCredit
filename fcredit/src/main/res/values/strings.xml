@@ -16,8 +16,9 @@
     <string name="section_home">首页</string>
     <string name="section_dynamic">动态</string>
     <string name="section_message">消息</string>
-    <string name="section_region">统计</string>
+    <string name="section_region">分区</string>
     <string name="section_coast">成本</string>
+    <string name="section_statistics">统计</string>
 
     <!-- Home -->
     <string name="home_top_default_nickname">未登录</string>
@@ -143,6 +144,11 @@
     <!--还款标记-->
     <string name="repaid">已还</string>
     <string name="not_repay">未还</string>
+
+
+    <string name="house_coast">成本</string>
+    <string name="house_coast_list">成本列表</string>
+
 
     <!--button-->
     <string name="btn_save">保存</string>

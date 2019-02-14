@@ -63,7 +63,8 @@ public class RegionFragment extends BaseMvpFragment<RegionPresenter> implements 
 
     @Override
     protected void initViewAndEvent() {
-        tvTitle.setText(getString(R.string.section_region));
+        //tvTitle.setText(getString(R.string.section_region));
+        tvTitle.setText(getString(R.string.section_statistics));
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), SPAN_COUNT);
         GridLayoutManager.SpanSizeLookup spanSizeLookup = new GridLayoutManager.SpanSizeLookup() {
             @Override
