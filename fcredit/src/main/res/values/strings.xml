@@ -148,6 +148,9 @@
 
     <string name="house_coast">成本</string>
     <string name="house_coast_list">成本列表</string>
+    <string name="swipe_card_record">刷卡记录</string>
+    <string name="card_select_list">信用卡信息</string>
+    <string name="card_add_title">添加信用卡</string>
 
 
     <!--button-->

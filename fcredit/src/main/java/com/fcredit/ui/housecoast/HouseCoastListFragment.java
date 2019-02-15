@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.fcredit.R;
 
@@ -13,6 +15,10 @@ import com.fcredit.R;
  * 房屋成本列表
  */
 public class HouseCoastListFragment extends Fragment {
+    // 显示数据表的Layout
+    private LinearLayout cellLayout;
+    private RelativeLayout cellLineLayout;
+    private String[] ColName={"操作","序号","房屋名称","交易日期", "贷款总额", "成本合计(万)", "备注"};
 
 
     @Override

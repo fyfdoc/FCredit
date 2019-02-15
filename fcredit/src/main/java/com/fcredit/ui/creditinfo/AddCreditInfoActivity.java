@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.fcredit.R;
+import com.fcredit.widget.textview.AlwaysCenterTextView;
 
 public class AddCreditInfoActivity extends AppCompatActivity {
 
@@ -18,6 +21,22 @@ public class AddCreditInfoActivity extends AppCompatActivity {
         Bundle bundle = intent.getBundleExtra("bundle");
 
         setContentView(R.layout.activity_add_credit_info);
+
+        View view = getWindow().getDecorView();
+
+        // 设置标题
+        AlwaysCenterTextView backToolTitle = view.findViewById(R.id.item_title);
+        backToolTitle.setText(R.string.card_add_title);
+
+        // 返回按钮
+        ImageView btnBack = view.findViewById(R.id.btn_back);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         // 当前Fragment
         AddCreditInfoFragment fragment = (AddCreditInfoFragment) getSupportFragmentManager().findFragmentById(R.id.addCreditFragment);
