@@ -28,4 +28,18 @@ public class AppUtil {
 
         return  new BigDecimal(valTmp);
     }
+
+    /**
+     * 格式化小数点
+     * @param val
+     * @param round
+     * @return
+     */
+    public static BigDecimal bigDecimalRound(BigDecimal val , int round)
+    {
+        BigDecimal rs = val;
+        rs = rs.divide(new BigDecimal(1), BigDecimal.ROUND_UP, round);
+
+        return rs;
+    }
 }

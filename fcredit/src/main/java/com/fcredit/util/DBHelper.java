@@ -9,7 +9,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private Context mContext;
     // 数据库版本
-    public static int dbVer = 4;
+    public static int dbVer = 5;
 
     // 信用卡信息表
     public static final String CREATE_CREDIT_INFO_TABLE = "CREATE TABLE t_credit_info ("
@@ -52,6 +52,23 @@ public class DBHelper extends SQLiteOpenHelper {
             + " (id text primary key"
             + " ,credit_id text)"; // 贷款记录id或信用卡记录id
 
+    // 房屋成本汇总表
+    public static final String CREATE_HOUSE_COST_TABLE = "CREATE TABLE t_house_cost "
+            + " (id text primary key"
+            + " ,house_name text" // 房屋名称
+            + " ,trade_date date" // 交易日期
+            + " ,credit_limit decimal(8, 2)" // 贷款总额(万)
+            + " ,cost_sum decimal(8, 2)" // 成本合计(万)
+            + " ,comment text)";
+
+    // 房屋成本项目表
+    public static final String CREATE_HOUSE_COST_ITEM_TABLE = "CREATE TABLE t_house_item_cost"
+            + " (id text primary key"
+            + " ,house_id text" // 房屋记录id
+            + " ,cost_name text" // 费用名称
+            + " ,cost_amount decimal(8, 2)" // 费用金额(元)
+            + " ,incurred_date date" // 发生日期
+            + " ,comment text)";
 
     /**
      * 带全部参数的构造方法
@@ -74,10 +91,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db)
     {
         // 创建表
-        db.execSQL(CREATE_CREDIT_INFO_TABLE);
+/*        db.execSQL(CREATE_CREDIT_INFO_TABLE);
         db.execSQL(CREATE_SWIPE_RECORD_INFO_TABLE);
         db.execSQL(CREATE_CREDIT_MANG_TABLE);
-        db.execSQL(CREATE_REPAYMENT_MARK_TABLE);
+        db.execSQL(CREATE_REPAYMENT_MARK_TABLE);*/
+        db.execSQL(CREATE_HOUSE_COST_TABLE);
+        db.execSQL(CREATE_HOUSE_COST_ITEM_TABLE);
 
         Toast.makeText(mContext, "create succeeded", Toast.LENGTH_SHORT).show();
     }

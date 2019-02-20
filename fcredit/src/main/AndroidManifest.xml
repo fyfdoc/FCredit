@@ -101,7 +101,19 @@
             android:name=".ui.creditmang.CreditMangAddActivity"
             android:label="@string/title_activity_credit_mang"
             android:theme="@style/AppTheme" />
-        <activity android:name=".ui.housecoast.HouseCoastListActivity"></activity>
+        <activity android:name=".ui.housecoast.HouseCoastListActivity" />
+        <activity
+            android:name=".ui.housecoast.HouseCostAddActivity"
+            android:label="@string/title_activity_house_cost_add"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.housecoast.HouseCostItemListActivity"
+            android:label="@string/title_activity_house_cost_item_list"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ui.housecoast.HouseCostItemAddActivity"
+            android:label="@string/title_activity_house_cost_item_add"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

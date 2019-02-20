@@ -15,6 +15,7 @@
         <!--<item name="android:navigationBarColor" tools:targetApi="lollipop">@color/navigationBarColor</item>-->
         <!--<item name="android:windowBackground">@color/windowBackground</item>-->
     </style>
+
     <style name="SwitchTheme">
         <item name="colorAccent">@color/blue_little</item>
     </style>
